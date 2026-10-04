@@ -9,7 +9,64 @@ body {
     color: #fff8ed;
 }
 
-/* Main restaurant section */
+
+/* =========================
+   THREE DOT MENU
+   ========================= */
+
+.three-dots {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.three-dots > button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 200px;
+    background: #3a2115;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.options-menu button {
+    display: block;
+    width: 100%;
+    padding: 12px 10px;
+    margin: 3px 0;
+    background: transparent;
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.options-menu button:hover {
+    background: #5a3320;
+}
+
+
+/* =========================
+   MAIN RESTAURANT SECTION
+   ========================= */
+
 .hero {
     position: relative;
     text-align: center;
@@ -23,7 +80,6 @@ body {
     display: block;
 }
 
-/* Dark layer over the picture */
 .hero::after {
     content: "";
     position: absolute;
@@ -34,7 +90,6 @@ body {
     background: rgba(0, 0, 0, 0.35);
 }
 
-/* Restaurant name */
 .hero-text {
     position: absolute;
     top: 50%;
@@ -55,7 +110,11 @@ body {
     color: white;
 }
 
-/* Menu */
+
+/* =========================
+   MENU
+   ========================= */
+
 .menu {
     padding: 50px 20px;
     text-align: center;
@@ -68,7 +127,6 @@ body {
     margin-bottom: 35px;
 }
 
-/* Food cards */
 .food-container {
     display: flex;
     justify-content: center;
@@ -76,12 +134,18 @@ body {
     gap: 25px;
 }
 
+
+/* =========================
+   FOOD CARDS
+   ========================= */
+
 .food-card {
     width: 300px;
     background-color: #3a2115;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    padding-bottom: 20px;
 }
 
 .food-card img {
@@ -94,60 +158,56 @@ body {
 .food-card h3 {
     font-size: 21px;
     color: #fff8ed;
-    margin: 18px 10px 8px;
+    margin: 18px 10px 15px;
 }
 
-.price {
+
+/* =========================
+   PRICE + QUANTITY
+   ========================= */
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.item-price {
     font-size: 22px;
     font-weight: bold;
     color: #f5b84b;
-    margin-bottom: 20px;
+    margin-right: 10px;
 }
 
-/* About */
-.about {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #301b11;
+.price-row button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f5b84b;
+    color: #24140d;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.about h2 {
-    color: #f5d28b;
-    font-size: 30px;
+.price-row button:hover {
+    background-color: #f5d28b;
 }
 
-.about p {
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
-    color: #f0dfcf;
+.price-row span[id^="quantity"] {
+    min-width: 22px;
+    font-size: 19px;
+    font-weight: bold;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #160b07;
-    color: #cdb9a7;
-}
 
-/* Mobile */
-@media (max-width: 600px) {
+/* =========================
+   TOTAL
+   ========================= */
 
-    .hero img {
-        height: 400px;
-    }
-
-    .hero-text h1 {
-        font-size: 34px;
-    }
-
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    .food-card {
-        width: 90%;
-        max-width: 330px;
-    }
-}
+.cart-total {
+    margin: 40px auto 10px;
+    padding: 20px;
+    max-width: 500
