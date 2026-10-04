@@ -4,48 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Tom's Restaurant</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- 3 DOT MENU -->
+<!-- THREE DOT MENU -->
 <div class="three-dots">
+
     <button onclick="toggleMenu()">⋮</button>
 
     <div id="options-menu" class="options-menu">
+
         <button>⭐ Give Rating</button>
         <button>📞 Call Now</button>
         <button>⚠️ Report Problem</button>
         <button>💡 Suggest an Idea</button>
+
     </div>
+
 </div>
 
 
 <!-- RESTAURANT MAIN PICTURE -->
+
 <section class="hero">
 
     <img src="tom's-restuarant.jpg.jpeg"
          alt="Tom's Restaurant">
 
     <div class="hero-text">
+
         <h1>Tom's Restaurant</h1>
+
         <p>Delicious food, made with love.</p>
+
     </div>
 
 </section>
 
 
 <!-- MENU -->
+
 <section class="menu">
 
     <h2>Our Menu</h2>
+
 
     <div class="food-container">
 
 
         <!-- CHICKEN BIRYANI -->
+
         <div class="food-card">
 
             <img src="chicken-biryani.jpg.jpeg"
@@ -53,18 +66,24 @@
 
             <h3>Chicken Biryani</h3>
 
-            <p class="price">₹200</p>
+            <div class="price-row">
 
-            <div class="quantity">
+                <span class="item-price"
+                      id="price-0">₹200</span>
+
                 <button onclick="changeQuantity(0, -1)">−</button>
+
                 <span id="quantity-0">0</span>
+
                 <button onclick="changeQuantity(0, 1)">+</button>
+
             </div>
 
         </div>
 
 
         <!-- CHICKEN FRY PIECE BIRYANI -->
+
         <div class="food-card">
 
             <img src="chicken-fry-piece-biryani.jpg.jpeg"
@@ -72,18 +91,24 @@
 
             <h3>Chicken Fry Piece Biryani</h3>
 
-            <p class="price">₹210</p>
+            <div class="price-row">
 
-            <div class="quantity">
+                <span class="item-price"
+                      id="price-1">₹210</span>
+
                 <button onclick="changeQuantity(1, -1)">−</button>
+
                 <span id="quantity-1">0</span>
+
                 <button onclick="changeQuantity(1, 1)">+</button>
+
             </div>
 
         </div>
 
 
         <!-- CHICKEN JOINT BIRYANI -->
+
         <div class="food-card">
 
             <img src="chicken-joint-biryani.jpg.jpeg"
@@ -91,20 +116,27 @@
 
             <h3>Chicken Joint Biryani</h3>
 
-            <p class="price">₹220</p>
+            <div class="price-row">
 
-            <div class="quantity">
+                <span class="item-price"
+                      id="price-2">₹220</span>
+
                 <button onclick="changeQuantity(2, -1)">−</button>
+
                 <span id="quantity-2">0</span>
+
                 <button onclick="changeQuantity(2, 1)">+</button>
+
             </div>
 
         </div>
+
 
     </div>
 
 
     <!-- TOTAL -->
+
     <div class="cart-total">
 
         <h2>Total Items: <span id="total-items">0</span></h2>
@@ -117,6 +149,7 @@
 
 
 <!-- ABOUT -->
+
 <section class="about">
 
     <h2>About Tom's Restaurant</h2>
@@ -130,6 +163,7 @@
 
 
 <!-- FOOTER -->
+
 <footer>
 
     <p>© 2026 Tom's Restaurant</p>
@@ -138,6 +172,7 @@
 
 
 <!-- JAVASCRIPT -->
+
 <script>
 
 const prices = [200, 210, 220];
@@ -150,20 +185,31 @@ function changeQuantity(item, amount) {
     quantities[item] += amount;
 
     if (quantities[item] < 0) {
+
         quantities[item] = 0;
+
     }
+
 
     document.getElementById("quantity-" + item).textContent =
         quantities[item];
 
+
+    document.getElementById("price-" + item).textContent =
+        "₹" + (quantities[item] * prices[item]);
+
+
     updateTotal();
+
 }
 
 
 function updateTotal() {
 
     let totalItems = 0;
+
     let totalPrice = 0;
+
 
     for (let i = 0; i < quantities.length; i++) {
 
@@ -173,11 +219,14 @@ function updateTotal() {
 
     }
 
+
     document.getElementById("total-items").textContent =
         totalItems;
 
+
     document.getElementById("total-price").textContent =
         totalPrice;
+
 }
 
 
@@ -185,15 +234,22 @@ function toggleMenu() {
 
     const menu = document.getElementById("options-menu");
 
+
     if (menu.style.display === "block") {
+
         menu.style.display = "none";
+
     } else {
+
         menu.style.display = "block";
+
     }
 
 }
 
 </script>
 
+
 </body>
+
 </html>
