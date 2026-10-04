@@ -1,1 +1,153 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #24140d;
+    color: #fff8ed;
+}
+
+/* Main restaurant section */
+.hero {
+    position: relative;
+    text-align: center;
+    background-color: #3a2115;
+}
+
+.hero img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dark layer over the picture */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Restaurant name */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 90%;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    color: #f5d28b;
+    margin: 0 0 10px;
+}
+
+.hero-text p {
+    font-size: 20px;
+    color: white;
+}
+
+/* Menu */
+.menu {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #24140d;
+}
+
+.menu h2 {
+    font-size: 36px;
+    color: #f5d28b;
+    margin-bottom: 35px;
+}
+
+/* Food cards */
+.food-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.food-card {
+    width: 300px;
+    background-color: #3a2115;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.food-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.food-card h3 {
+    font-size: 21px;
+    color: #fff8ed;
+    margin: 18px 10px 8px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f5b84b;
+    margin-bottom: 20px;
+}
+
+/* About */
+.about {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #301b11;
+}
+
+.about h2 {
+    color: #f5d28b;
+    font-size: 30px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.7;
+    color: #f0dfcf;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #160b07;
+    color: #cdb9a7;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .hero img {
+        height: 400px;
+    }
+
+    .hero-text h1 {
+        font-size: 34px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .food-card {
+        width: 90%;
+        max-width: 330px;
+    }
+}
