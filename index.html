@@ -4,88 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Tom's Restaurant</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Restaurant Main Picture -->
-    <section class="hero">
-        <img src="tom's-restuarant.jpg.jpeg"
-             alt="Tom's Restaurant">
+<!-- 3 DOT MENU -->
+<div class="three-dots">
+    <button onclick="toggleMenu()">⋮</button>
 
-        <div class="hero-text">
-            <h1>Tom's Restaurant</h1>
-            <p>Delicious food, made with love.</p>
+    <div id="options-menu" class="options-menu">
+        <button>⭐ Give Rating</button>
+        <button>📞 Call Now</button>
+        <button>⚠️ Report Problem</button>
+        <button>💡 Suggest an Idea</button>
+    </div>
+</div>
+
+
+<!-- RESTAURANT MAIN PICTURE -->
+<section class="hero">
+
+    <img src="tom's-restuarant.jpg.jpeg"
+         alt="Tom's Restaurant">
+
+    <div class="hero-text">
+        <h1>Tom's Restaurant</h1>
+        <p>Delicious food, made with love.</p>
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+<section class="menu">
+
+    <h2>Our Menu</h2>
+
+    <div class="food-container">
+
+
+        <!-- CHICKEN BIRYANI -->
+        <div class="food-card">
+
+            <img src="chicken-biryani.jpg.jpeg"
+                 alt="Chicken Biryani">
+
+            <h3>Chicken Biryani</h3>
+
+            <p class="price">₹200</p>
+
+            <div class="quantity">
+                <button onclick="changeQuantity(0, -1)">−</button>
+                <span id="quantity-0">0</span>
+                <button onclick="changeQuantity(0, 1)">+</button>
+            </div>
+
         </div>
-    </section>
 
 
-    <!-- Menu -->
-    <section class="menu">
+        <!-- CHICKEN FRY PIECE BIRYANI -->
+        <div class="food-card">
 
-        <h2>Our Menu</h2>
+            <img src="chicken-fry-piece-biryani.jpg.jpeg"
+                 alt="Chicken Fry Piece Biryani">
 
-        <div class="food-container">
+            <h3>Chicken Fry Piece Biryani</h3>
 
-            <!-- Chicken Biryani -->
-            <div class="food-card">
-                <img src="chicken-biryani.jpg.jpeg"
-                     alt="Chicken Biryani">
+            <p class="price">₹210</p>
 
-                <h3>Chicken Biryani</h3>
-                <p class="price">₹200</p>
-            </div>
-
-
-            <!-- Chicken Fry Piece Biryani -->
-            <div class="food-card">
-                <img src="chicken-fry-piece-biryani.jpg.jpeg"
-                     alt="Chicken Fry Piece Biryani">
-
-                <h3>Chicken Fry Piece Biryani</h3>
-                <p class="price">₹210</p>
-            </div>
-
-
-            <!-- Chicken Joint Biryani -->
-            <div class="food-card">
-                <img src="chicken-joint-biryani.jpg.jpeg"
-                     alt="Chicken Joint Biryani">
-
-                <h3>Chicken Joint Biryani</h3>
-                <p class="price">₹220</p>
+            <div class="quantity">
+                <button onclick="changeQuantity(1, -1)">−</button>
+                <span id="quantity-1">0</span>
+                <button onclick="changeQuantity(1, 1)">+</button>
             </div>
 
         </div>
 
-    </section>
+
+        <!-- CHICKEN JOINT BIRYANI -->
+        <div class="food-card">
+
+            <img src="chicken-joint-biryani.jpg.jpeg"
+                 alt="Chicken Joint Biryani">
+
+            <h3>Chicken Joint Biryani</h3>
+
+            <p class="price">₹220</p>
+
+            <div class="quantity">
+                <button onclick="changeQuantity(2, -1)">−</button>
+                <span id="quantity-2">0</span>
+                <button onclick="changeQuantity(2, 1)">+</button>
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <!-- About -->
-    <section class="about">
+    <!-- TOTAL -->
+    <div class="cart-total">
 
-        <h2>About Tom's Restaurant</h2>
+        <h2>Total Items: <span id="total-items">0</span></h2>
 
-        <p>
-            Welcome to Tom's Restaurant!
-            Enjoy delicious food, great taste and a wonderful experience.
-        </p>
+        <h2>Total Amount: ₹<span id="total-price">0</span></h2>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Footer -->
-    <footer>
+<!-- ABOUT -->
+<section class="about">
 
-        <p>© 2026 Tom's Restaurant</p>
+    <h2>About Tom's Restaurant</h2>
 
-    </footer>
+    <p>
+        Welcome to Tom's Restaurant!
+        Enjoy delicious food, great taste and a wonderful experience.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>© 2026 Tom's Restaurant</p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+const prices = [200, 210, 220];
+
+const quantities = [0, 0, 0];
+
+
+function changeQuantity(item, amount) {
+
+    quantities[item] += amount;
+
+    if (quantities[item] < 0) {
+        quantities[item] = 0;
+    }
+
+    document.getElementById("quantity-" + item).textContent =
+        quantities[item];
+
+    updateTotal();
+}
+
+
+function updateTotal() {
+
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    for (let i = 0; i < quantities.length; i++) {
+
+        totalItems += quantities[i];
+
+        totalPrice += quantities[i] * prices[i];
+
+    }
+
+    document.getElementById("total-items").textContent =
+        totalItems;
+
+    document.getElementById("total-price").textContent =
+        totalPrice;
+}
+
+
+function toggleMenu() {
+
+    const menu = document.getElementById("options-menu");
+
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+
+}
+
+</script>
 
 </body>
-
 </html>
-  
