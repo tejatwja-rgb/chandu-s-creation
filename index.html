@@ -1,213 +1,255 @@
-* {
-    box-sizing: border-box;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tom's Restaurant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- THREE DOT MENU -->
+<div class="three-dots">
+
+    <button onclick="toggleMenu()">⋮</button>
+
+    <div id="options-menu" class="options-menu">
+
+        <button>⭐ Give Rating</button>
+        <button>📞 Call Now</button>
+        <button>⚠️ Report Problem</button>
+        <button>💡 Suggest an Idea</button>
+
+    </div>
+
+</div>
+
+
+<!-- RESTAURANT MAIN PICTURE -->
+
+<section class="hero">
+
+    <img src="tom's-restuarant.jpg.jpeg"
+         alt="Tom's Restaurant">
+
+    <div class="hero-text">
+
+        <h1>Tom's Restaurant</h1>
+
+        <p>Delicious food, made with love.</p>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu">
+
+    <h2>Our Menu</h2>
+
+
+    <div class="food-container">
+
+
+        <!-- CHICKEN BIRYANI -->
+
+        <div class="food-card">
+
+            <img src="chicken-biryani.jpg.jpeg"
+                 alt="Chicken Biryani">
+
+            <h3>Chicken Biryani</h3>
+
+            <div class="price-row">
+
+                <span class="item-price"
+                      id="price-0">₹200</span>
+
+                <button onclick="changeQuantity(0, -1)">−</button>
+
+                <span id="quantity-0">0</span>
+
+                <button onclick="changeQuantity(0, 1)">+</button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHICKEN FRY PIECE BIRYANI -->
+
+        <div class="food-card">
+
+            <img src="chicken-fry-piece-biryani.jpg.jpeg"
+                 alt="Chicken Fry Piece Biryani">
+
+            <h3>Chicken Fry Piece Biryani</h3>
+
+            <div class="price-row">
+
+                <span class="item-price"
+                      id="price-1">₹210</span>
+
+                <button onclick="changeQuantity(1, -1)">−</button>
+
+                <span id="quantity-1">0</span>
+
+                <button onclick="changeQuantity(1, 1)">+</button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHICKEN JOINT BIRYANI -->
+
+        <div class="food-card">
+
+            <img src="chicken-joint-biryani.jpg.jpeg"
+                 alt="Chicken Joint Biryani">
+
+            <h3>Chicken Joint Biryani</h3>
+
+            <div class="price-row">
+
+                <span class="item-price"
+                      id="price-2">₹220</span>
+
+                <button onclick="changeQuantity(2, -1)">−</button>
+
+                <span id="quantity-2">0</span>
+
+                <button onclick="changeQuantity(2, 1)">+</button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- TOTAL -->
+
+    <div class="cart-total">
+
+        <h2>Total Items: <span id="total-items">0</span></h2>
+
+        <h2>Total Amount: ₹<span id="total-price">0</span></h2>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+    <h2>About Tom's Restaurant</h2>
+
+    <p>
+        Welcome to Tom's Restaurant!
+        Enjoy delicious food, great taste and a wonderful experience.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 Tom's Restaurant</p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const prices = [200, 210, 220];
+
+const quantities = [0, 0, 0];
+
+
+function changeQuantity(item, amount) {
+
+    quantities[item] += amount;
+
+    if (quantities[item] < 0) {
+
+        quantities[item] = 0;
+
+    }
+
+
+    document.getElementById("quantity-" + item).textContent =
+        quantities[item];
+
+
+    document.getElementById("price-" + item).textContent =
+        "₹" + (quantities[item] * prices[item]);
+
+
+    updateTotal();
+
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #24140d;
-    color: #fff8ed;
+
+function updateTotal() {
+
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+
+    for (let i = 0; i < quantities.length; i++) {
+
+        totalItems += quantities[i];
+
+        totalPrice += quantities[i] * prices[i];
+
+    }
+
+
+    document.getElementById("total-items").textContent =
+        totalItems;
+
+
+    document.getElementById("total-price").textContent =
+        totalPrice;
+
 }
 
 
-/* =========================
-   THREE DOT MENU
-   ========================= */
+function toggleMenu() {
 
-.three-dots {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 10;
+    const menu = document.getElementById("options-menu");
+
+
+    if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+    } else {
+
+        menu.style.display = "block";
+
+    }
+
 }
 
-.three-dots > button {
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.65);
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.options-menu {
-    display: none;
-    position: absolute;
-    top: 52px;
-    right: 0;
-    width: 200px;
-    background: #3a2115;
-    border-radius: 10px;
-    padding: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.options-menu button {
-    display: block;
-    width: 100%;
-    padding: 12px 10px;
-    margin: 3px 0;
-    background: transparent;
-    color: white;
-    border: none;
-    text-align: left;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.options-menu button:hover {
-    background: #5a3320;
-}
+</script>
 
 
-/* =========================
-   MAIN RESTAURANT SECTION
-   ========================= */
+</body>
 
-.hero {
-    position: relative;
-    text-align: center;
-    background-color: #3a2115;
-}
-
-.hero img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    display: block;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.35);
-}
-
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 90%;
-}
-
-.hero-text h1 {
-    font-size: 48px;
-    color: #f5d28b;
-    margin: 0 0 10px;
-}
-
-.hero-text p {
-    font-size: 20px;
-    color: white;
-}
-
-
-/* =========================
-   MENU
-   ========================= */
-
-.menu {
-    padding: 50px 20px;
-    text-align: center;
-    background-color: #24140d;
-}
-
-.menu h2 {
-    font-size: 36px;
-    color: #f5d28b;
-    margin-bottom: 35px;
-}
-
-.food-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-}
-
-
-/* =========================
-   FOOD CARDS
-   ========================= */
-
-.food-card {
-    width: 300px;
-    background-color: #3a2115;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    padding-bottom: 20px;
-}
-
-.food-card img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    display: block;
-}
-
-.food-card h3 {
-    font-size: 21px;
-    color: #fff8ed;
-    margin: 18px 10px 15px;
-}
-
-
-/* =========================
-   PRICE + QUANTITY
-   ========================= */
-
-.price-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.item-price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #f5b84b;
-    margin-right: 10px;
-}
-
-.price-row button {
-    width: 36px;
-    height: 36px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f5b84b;
-    color: #24140d;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.price-row button:hover {
-    background-color: #f5d28b;
-}
-
-.price-row span[id^="quantity"] {
-    min-width: 22px;
-    font-size: 19px;
-    font-weight: bold;
-}
-
-
-/* =========================
-   TOTAL
-   ========================= */
-
-.cart-total {
-    margin: 40px auto 10px;
-    padding: 20px;
-    max-width: 500
+</html>
