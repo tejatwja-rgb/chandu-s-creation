@@ -1,255 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
 
-    <title>Tom's Restaurant</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="style.css">
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #222;
+}
+
+/* HEADER */
+.header {
+    background: #ffffff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* 3 DOTS */
+.menu {
+    position: relative;
+}
+
+.dots {
+    font-size: 27px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 42px;
+    width: 190px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 50;
+}
+
+.options div {
+    padding: 13px 15px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.options div:hover {
+    background: #f2f2f2;
+}
+
+/* ITEMS */
+.items {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.item {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.item img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.price {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.add-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    border: none;
+    border-radius: 7px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+/* BOTTOM SUMMARY */
+.summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 12px 15px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.summary strong {
+    font-size: 16px;
+}
+
+#totalAmount {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* POPUP */
+.popup-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    width: 88%;
+    max-width: 360px;
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+}
+
+.popup h3 {
+    margin-top: 0;
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* STARS */
+.stars {
+    display: flex;
+    gap: 5px;
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.star {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star.selected {
+    color: #ffc107;
+}
+
+/* TEXTAREA */
+textarea {
+    width: 100%;
+    height: 90px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: Arial;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+/* CALL NUMBERS */
+.call-number {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: #f1f1f1;
+    text-decoration: none;
+    color: #111;
+    text-align: center;
+}
+
+/* EMPTY ITEM SPACE */
+.empty-item {
+    background: transparent;
+    min-height: 180px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item img {
+        height: 115px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- THREE DOT MENU -->
-<div class="three-dots">
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">My Restaurant</div>
 
-    <button onclick="toggleMenu()">⋮</button>
+    <div class="menu">
+        <div class="dots" onclick="toggleMenu()">⋮</div>
 
-    <div id="options-menu" class="options-menu">
-
-        <button>⭐ Give Rating</button>
-        <button>📞 Call Now</button>
-        <button>⚠️ Report Problem</button>
-        <button>💡 Suggest an Idea</button>
-
+        <div class="options" id="optionsMenu">
+            <div onclick="openRating()">⭐ Give Rating</div>
+            <div onclick="openCall()">📞 Call</div>
+            <div onclick="openProblem()">⚠️ Report a Problem</div>
+            <div onclick="openIdea()">💡 Suggest an Idea</div>
+        </div>
     </div>
+</div>
+
+
+<!-- ITEMS -->
+<div class="items">
+
+    <div class="item">
+        <img src="https://via.placeholder.com/400x250?text=Chicken+Biryani">
+        <div class="item-name">Chicken Biryani</div>
+        <div class="price">₹200</div>
+        <button class="add-btn" onclick="addItem(200)">Add Item</button>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/400x250?text=Chicken+Fry+Piece+Biryani">
+        <div class="item-name">Chicken Fry Piece Biryani</div>
+        <div class="price">₹210</div>
+        <button class="add-btn" onclick="addItem(210)">Add Item</button>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/400x250?text=Chicken+Joint+Biryani">
+        <div class="item-name">Chicken Joint Biryani</div>
+        <div class="price">₹220</div>
+        <button class="add-btn" onclick="addItem(220)">Add Item</button>
+    </div>
+
+    <!-- EMPTY SPACES FOR FUTURE ITEMS -->
+    <div class="empty-item"></div>
+    <div class="empty-item"></div>
+    <div class="empty-item"></div>
 
 </div>
 
 
-<!-- RESTAURANT MAIN PICTURE -->
-
-<section class="hero">
-
-    <img src="tom's-restuarant.jpg.jpeg"
-         alt="Tom's Restaurant">
-
-    <div class="hero-text">
-
-        <h1>Tom's Restaurant</h1>
-
-        <p>Delicious food, made with love.</p>
-
-    </div>
-
-</section>
+<!-- BOTTOM SUMMARY -->
+<div class="summary">
+    <strong>Total Items: <span id="totalItems">0</span></strong>
+    <strong>Total: ₹<span id="totalAmount">0</span></strong>
+</div>
 
 
-<!-- MENU -->
+<!-- RATING POPUP -->
+<div class="popup-bg" id="ratingPopup">
+    <div class="popup">
 
-<section class="menu">
+        <span class="close" onclick="closePopups()">×</span>
 
-    <h2>Our Menu</h2>
+        <h3>Give Rating</h3>
 
-
-    <div class="food-container">
-
-
-        <!-- CHICKEN BIRYANI -->
-
-        <div class="food-card">
-
-            <img src="chicken-biryani.jpg.jpeg"
-                 alt="Chicken Biryani">
-
-            <h3>Chicken Biryani</h3>
-
-            <div class="price-row">
-
-                <span class="item-price"
-                      id="price-0">₹200</span>
-
-                <button onclick="changeQuantity(0, -1)">−</button>
-
-                <span id="quantity-0">0</span>
-
-                <button onclick="changeQuantity(0, 1)">+</button>
-
-            </div>
-
+        <div class="stars">
+            <span class="star" onclick="selectStar(1)">★</span>
+            <span class="star" onclick="selectStar(2)">★</span>
+            <span class="star" onclick="selectStar(3)">★</span>
+            <span class="star" onclick="selectStar(4)">★</span>
+            <span class="star" onclick="selectStar(5)">★</span>
         </div>
 
+        <textarea id="feedback" placeholder="Write your feedback..."></textarea>
 
-        <!-- CHICKEN FRY PIECE BIRYANI -->
-
-        <div class="food-card">
-
-            <img src="chicken-fry-piece-biryani.jpg.jpeg"
-                 alt="Chicken Fry Piece Biryani">
-
-            <h3>Chicken Fry Piece Biryani</h3>
-
-            <div class="price-row">
-
-                <span class="item-price"
-                      id="price-1">₹210</span>
-
-                <button onclick="changeQuantity(1, -1)">−</button>
-
-                <span id="quantity-1">0</span>
-
-                <button onclick="changeQuantity(1, 1)">+</button>
-
-            </div>
-
-        </div>
-
-
-        <!-- CHICKEN JOINT BIRYANI -->
-
-        <div class="food-card">
-
-            <img src="chicken-joint-biryani.jpg.jpeg"
-                 alt="Chicken Joint Biryani">
-
-            <h3>Chicken Joint Biryani</h3>
-
-            <div class="price-row">
-
-                <span class="item-price"
-                      id="price-2">₹220</span>
-
-                <button onclick="changeQuantity(2, -1)">−</button>
-
-                <span id="quantity-2">0</span>
-
-                <button onclick="changeQuantity(2, 1)">+</button>
-
-            </div>
-
-        </div>
-
+        <button class="submit-btn" onclick="submitRating()">
+            Submit Rating
+        </button>
 
     </div>
+</div>
 
 
-    <!-- TOTAL -->
+<!-- CALL POPUP -->
+<div class="popup-bg" id="callPopup">
+    <div class="popup">
 
-    <div class="cart-total">
+        <span class="close" onclick="closePopups()">×</span>
 
-        <h2>Total Items: <span id="total-items">0</span></h2>
+        <h3>Call Us</h3>
 
-        <h2>Total Amount: ₹<span id="total-price">0</span></h2>
+        <!-- ADD YOUR NUMBERS HERE LATER -->
+        <a class="call-number" href="tel:">📞 Number 1</a>
+        <a class="call-number" href="tel:">📞 Number 2</a>
 
     </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="about">
-
-    <h2>About Tom's Restaurant</h2>
-
-    <p>
-        Welcome to Tom's Restaurant!
-        Enjoy delicious food, great taste and a wonderful experience.
-    </p>
-
-</section>
+</div>
 
 
-<!-- FOOTER -->
+<!-- REPORT POPUP -->
+<div class="popup-bg" id="problemPopup">
+    <div class="popup">
 
-<footer>
+        <span class="close" onclick="closePopups()">×</span>
 
-    <p>© 2026 Tom's Restaurant</p>
+        <h3>Report a Problem</h3>
 
-</footer>
+        <textarea id="problemText"
+                  placeholder="Tell us about the problem..."></textarea>
+
+        <button class="submit-btn" onclick="submitProblem()">
+            Submit
+        </button>
+
+    </div>
+</div>
 
 
-<!-- JAVASCRIPT -->
+<!-- IDEA POPUP -->
+<div class="popup-bg" id="ideaPopup">
+    <div class="popup">
+
+        <span class="close" onclick="closePopups()">×</span>
+
+        <h3>Suggest an Idea</h3>
+
+        <textarea id="ideaText"
+                  placeholder="Write your idea..."></textarea>
+
+        <button class="submit-btn" onclick="submitIdea()">
+            Submit
+        </button>
+
+    </div>
+</div>
+
 
 <script>
 
-const prices = [200, 210, 220];
+/* ORDER CALCULATION */
 
-const quantities = [0, 0, 0];
+let totalItems = 0;
+let totalAmount = 0;
 
+function addItem(price) {
+    totalItems++;
+    totalAmount += price;
 
-function changeQuantity(item, amount) {
-
-    quantities[item] += amount;
-
-    if (quantities[item] < 0) {
-
-        quantities[item] = 0;
-
-    }
-
-
-    document.getElementById("quantity-" + item).textContent =
-        quantities[item];
-
-
-    document.getElementById("price-" + item).textContent =
-        "₹" + (quantities[item] * prices[item]);
-
-
-    updateTotal();
-
+    document.getElementById("totalItems").textContent = totalItems;
+    document.getElementById("totalAmount").textContent = totalAmount;
 }
 
 
-function updateTotal() {
-
-    let totalItems = 0;
-
-    let totalPrice = 0;
-
-
-    for (let i = 0; i < quantities.length; i++) {
-
-        totalItems += quantities[i];
-
-        totalPrice += quantities[i] * prices[i];
-
-    }
-
-
-    document.getElementById("total-items").textContent =
-        totalItems;
-
-
-    document.getElementById("total-price").textContent =
-        totalPrice;
-
-}
-
+/* 3 DOT MENU */
 
 function toggleMenu() {
-
-    const menu = document.getElementById("options-menu");
-
+    const menu = document.getElementById("optionsMenu");
 
     if (menu.style.display === "block") {
-
         menu.style.display = "none";
-
     } else {
-
         menu.style.display = "block";
+    }
+}
 
+
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", function(event) {
+
+    const menu = document.querySelector(".menu");
+
+    if (!menu.contains(event.target)) {
+        document.getElementById("optionsMenu").style.display = "none";
     }
 
+});
+
+
+/* OPEN POPUPS */
+
+function openRating() {
+    closePopups();
+    document.getElementById("ratingPopup").style.display = "flex";
+    document.getElementById("optionsMenu").style.display = "none";
+}
+
+function openCall() {
+    closePopups();
+    document.getElementById("callPopup").style.display = "flex";
+    document.getElementById("optionsMenu").style.display = "none";
+}
+
+function openProblem() {
+    closePopups();
+    document.getElementById("problemPopup").style.display = "flex";
+    document.getElementById("optionsMenu").style.display = "none";
+}
+
+function openIdea() {
+    closePopups();
+    document.getElementById("ideaPopup").style.display = "flex";
+    document.getElementById("optionsMenu").style.display = "none";
+}
+
+
+/* CLOSE POPUPS */
+
+function closePopups() {
+    document.getElementById("ratingPopup").style.display = "none";
+    document.getElementById("callPopup").style.display = "none";
+    document.getElementById("problemPopup").style.display = "none";
+    document.getElementById("ideaPopup").style.display = "none";
+}
+
+
+/* RATING */
+
+let selectedRating = 0;
+
+function selectStar(number) {
+
+    selectedRating = number;
+
+    const stars = document.querySelectorAll(".star");
+
+    stars.forEach(function(star, index) {
+
+        if (index < number) {
+            star.classList.add("selected");
+        } else {
+            star.classList.remove("selected");
+        }
+
+    });
+}
+
+
+/* SUBMIT RATING */
+
+function submitRating() {
+
+    if (selectedRating === 0) {
+        alert("Please select a rating.");
+        return;
+    }
+
+    const feedback = document.getElementById("feedback").value;
+
+    alert("Thank you for your rating!");
+
+    console.log("Rating:", selectedRating);
+    console.log("Feedback:", feedback);
+
+    document.getElementById("feedback").value = "";
+    selectedRating = 0;
+
+    document.querySelectorAll(".star").forEach(function(star) {
+        star.classList.remove("selected");
+    });
+
+    closePopups();
+}
+
+
+/* REPORT PROBLEM */
+
+function submitProblem() {
+
+    const message = document.getElementById("problemText").value.trim();
+
+    if (message === "") {
+        alert("Please enter the problem.");
+        return;
+    }
+
+    alert("Thank you. Your problem has been submitted.");
+
+    console.log("Problem:", message);
+
+    document.getElementById("problemText").value = "";
+
+    closePopups();
+}
+
+
+/* SUGGEST IDEA */
+
+function submitIdea() {
+
+    const message = document.getElementById("ideaText").value.trim();
+
+    if (message === "") {
+        alert("Please enter your idea.");
+        return;
+    }
+
+    alert("Thank you for your suggestion!");
+
+    console.log("Idea:", message);
+
+    document.getElementById("ideaText").value = "";
+
+    closePopups();
 }
 
 </script>
 
-
 </body>
-
 </html>
