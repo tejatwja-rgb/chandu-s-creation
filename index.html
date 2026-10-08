@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,212 +13,840 @@
 
 <body>
 
-<!-- THREE DOT MENU -->
+<!-- =========================
+     THREE DOT MENU
+     ========================= -->
+
 <div class="three-dots">
 
     <button onclick="toggleMenu()">⋮</button>
 
     <div id="options-menu" class="options-menu">
 
-        <button>⭐ Give Rating</button>
-        <button>📞 Call Now</button>
-        <button>⚠️ Report Problem</button>
-        <button>💡 Suggest an Idea</button>
+        <button onclick="callRestaurant()">📞 Call Now</button>
+
+        <button onclick="reportProblem()">⚠️ Report Problem</button>
+
+        <button onclick="suggestIdea()">💡 Suggest an Idea</button>
 
     </div>
 
 </div>
 
 
-<!-- RESTAURANT MAIN PICTURE -->
+<!-- =========================
+     HERO
+     ========================= -->
 
 <section class="hero">
 
     <img src="tom's-restuarant.jpg.jpeg"
          alt="Tom's Restaurant">
 
+    <div class="hero-overlay"></div>
+
     <div class="hero-text">
+
+        <span class="welcome-text">WELCOME TO</span>
 
         <h1>Tom's Restaurant</h1>
 
         <p>Delicious food, made with love.</p>
+
+        <a href="#menu" class="view-menu-btn">
+            View Menu ↓
+        </a>
 
     </div>
 
 </section>
 
 
-<!-- MENU -->
+<!-- =========================
+     MENU
+     ========================= -->
 
-<section class="menu">
+<section class="menu" id="menu">
 
-    <h2>Our Menu</h2>
+    <div class="section-heading">
+
+        <span>OUR SPECIALS</span>
+
+        <h2>Our Menu</h2>
+
+        <p>Freshly prepared and served with love.</p>
+
+    </div>
 
 
     <div class="food-container">
 
 
-        <!-- CHICKEN BIRYANI -->
+        <!-- ITEM 1 -->
 
         <div class="food-card">
 
             <img src="chicken-biryani.jpg.jpeg"
                  alt="Chicken Biryani">
 
-            <h3>Chicken Biryani</h3>
+            <div class="food-info">
 
-            <div class="price-row">
+                <h3>Chicken Biryani</h3>
 
-                <span class="item-price"
-                      id="price-0">₹200</span>
+                <p class="food-description">
+                    Delicious aromatic chicken biryani.
+                </p>
 
-                <button onclick="changeQuantity(0, -1)">−</button>
+                <div class="food-bottom">
 
-                <span id="quantity-0">0</span>
+                    <span class="item-price">
+                        ₹200
+                    </span>
 
-                <button onclick="changeQuantity(0, 1)">+</button>
+                    <button class="add-btn"
+                            onclick="addToCart(0)">
+                        Add +
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- CHICKEN FRY PIECE BIRYANI -->
+        <!-- ITEM 2 -->
 
         <div class="food-card">
 
             <img src="chicken-fry-piece-biryani.jpg.jpeg"
                  alt="Chicken Fry Piece Biryani">
 
-            <h3>Chicken Fry Piece Biryani</h3>
+            <div class="food-info">
 
-            <div class="price-row">
+                <h3>Chicken Fry Piece Biryani</h3>
 
-                <span class="item-price"
-                      id="price-1">₹210</span>
+                <p class="food-description">
+                    Spicy and crispy chicken fry biryani.
+                </p>
 
-                <button onclick="changeQuantity(1, -1)">−</button>
+                <div class="food-bottom">
 
-                <span id="quantity-1">0</span>
+                    <span class="item-price">
+                        ₹210
+                    </span>
 
-                <button onclick="changeQuantity(1, 1)">+</button>
+                    <button class="add-btn"
+                            onclick="addToCart(1)">
+                        Add +
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- CHICKEN JOINT BIRYANI -->
+        <!-- ITEM 3 -->
 
         <div class="food-card">
 
             <img src="chicken-joint-biryani.jpg.jpeg"
                  alt="Chicken Joint Biryani">
 
-            <h3>Chicken Joint Biryani</h3>
+            <div class="food-info">
 
-            <div class="price-row">
+                <h3>Chicken Joint Biryani</h3>
 
-                <span class="item-price"
-                      id="price-2">₹220</span>
+                <p class="food-description">
+                    Juicy chicken joint with flavorful rice.
+                </p>
 
-                <button onclick="changeQuantity(2, -1)">−</button>
+                <div class="food-bottom">
 
-                <span id="quantity-2">0</span>
+                    <span class="item-price">
+                        ₹220
+                    </span>
 
-                <button onclick="changeQuantity(2, 1)">+</button>
+                    <button class="add-btn"
+                            onclick="addToCart(2)">
+                        Add +
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
+        <!-- ITEM 4 -->
+
+        <div class="food-card">
+
+            <img src="food4.jpg"
+                 alt="Food Item 4">
+
+            <div class="food-info">
+
+                <h3>Food Item 4</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹150
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(3)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 5 -->
+
+        <div class="food-card">
+
+            <img src="food5.jpg"
+                 alt="Food Item 5">
+
+            <div class="food-info">
+
+                <h3>Food Item 5</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹160
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(4)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 6 -->
+
+        <div class="food-card">
+
+            <img src="food6.jpg"
+                 alt="Food Item 6">
+
+            <div class="food-info">
+
+                <h3>Food Item 6</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹180
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(5)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 7 -->
+
+        <div class="food-card">
+
+            <img src="food7.jpg"
+                 alt="Food Item 7">
+
+            <div class="food-info">
+
+                <h3>Food Item 7</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹190
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(6)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 8 -->
+
+        <div class="food-card">
+
+            <img src="food8.jpg"
+                 alt="Food Item 8">
+
+            <div class="food-info">
+
+                <h3>Food Item 8</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹200
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(7)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 9 -->
+
+        <div class="food-card">
+
+            <img src="food9.jpg"
+                 alt="Food Item 9">
+
+            <div class="food-info">
+
+                <h3>Food Item 9</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹170
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(8)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 10 -->
+
+        <div class="food-card">
+
+            <img src="food10.jpg"
+                 alt="Food Item 10">
+
+            <div class="food-info">
+
+                <h3>Food Item 10</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹180
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(9)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 11 -->
+
+        <div class="food-card">
+
+            <img src="food11.jpg"
+                 alt="Food Item 11">
+
+            <div class="food-info">
+
+                <h3>Food Item 11</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹210
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(10)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ITEM 12 -->
+
+        <div class="food-card">
+
+            <img src="food12.jpg"
+                 alt="Food Item 12">
+
+            <div class="food-info">
+
+                <h3>Food Item 12</h3>
+
+                <p class="food-description">
+                    Add your food description here.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="item-price">
+                        ₹220
+                    </span>
+
+                    <button class="add-btn"
+                            onclick="addToCart(11)">
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 
-    <!-- TOTAL -->
+    <!-- =========================
+         CART
+         ========================= -->
 
-    <div class="cart-total">
+    <div class="cart-box" id="cart">
 
-        <h2>Total Items: <span id="total-items">0</span></h2>
+        <div class="cart-title">
 
-        <h2>Total Amount: ₹<span id="total-price">0</span></h2>
+            <h2>🛒 Your Cart</h2>
+
+            <span id="cart-count">0 items</span>
+
+        </div>
+
+
+        <div id="cart-items">
+
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <div class="cart-summary">
+
+            <div class="summary-row">
+
+                <span>Total Items</span>
+
+                <strong id="total-items">0</strong>
+
+            </div>
+
+
+            <div class="summary-row total-row">
+
+                <span>Total Amount</span>
+
+                <strong>₹<span id="total-price">0</span></strong>
+
+            </div>
+
+
+            <!-- ORDER BUTTON -->
+
+            <button class="order-btn"
+                    onclick="orderOnWhatsApp()">
+
+                💬 Order on WhatsApp
+
+            </button>
+
+            <p class="order-note">
+                Your order details will be sent directly to WhatsApp.
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+     ========================= -->
 
 <section class="about">
 
-    <h2>About Tom's Restaurant</h2>
+    <div class="about-content">
 
-    <p>
-        Welcome to Tom's Restaurant!
-        Enjoy delicious food, great taste and a wonderful experience.
-    </p>
+        <span>ABOUT US</span>
+
+        <h2>About Tom's Restaurant</h2>
+
+        <p>
+            Welcome to Tom's Restaurant!
+            Enjoy delicious food, great taste and a wonderful experience.
+            We prepare every dish with care and serve it fresh.
+        </p>
+
+    </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     REVIEWS
+     ========================= -->
+
+<section class="reviews">
+
+    <div class="section-heading">
+
+        <span>WHAT PEOPLE SAY</span>
+
+        <h2>Customer Reviews</h2>
+
+    </div>
+
+
+    <div class="review-container">
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "The food was delicious and the service was excellent!"
+            </p>
+
+            <strong>Happy Customer</strong>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "Really tasty biryani. Definitely coming back again."
+            </p>
+
+            <strong>Happy Customer</strong>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "Great taste and good quantity. Highly recommended!"
+            </p>
+
+            <strong>Happy Customer</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
 
 <footer>
 
-    <p>© 2026 Tom's Restaurant</p>
+    <h3>Tom's Restaurant</h3>
+
+    <p>Delicious food, made with love.</p>
+
+    <p>© 2026 Tom's Restaurant. All Rights Reserved.</p>
 
 </footer>
 
 
-<!-- JAVASCRIPT -->
+<!-- =========================
+     JAVASCRIPT
+     ========================= -->
 
 <script>
 
-const prices = [200, 210, 220];
+/* =========================
+   WHATSAPP NUMBER
+   ========================= */
 
-const quantities = [0, 0, 0];
+/*
+   CHANGE THIS NUMBER LATER.
+
+   IMPORTANT:
+   Enter country code WITHOUT + sign.
+
+   Example for India:
+   919876543210
+*/
+
+const whatsappNumber = "91XXXXXXXXXX";
 
 
-function changeQuantity(item, amount) {
+/* =========================
+   FOOD DATA
+   ========================= */
 
-    quantities[item] += amount;
+const foods = [
 
-    if (quantities[item] < 0) {
+    {
+        name: "Chicken Biryani",
+        price: 200
+    },
 
-        quantities[item] = 0;
+    {
+        name: "Chicken Fry Piece Biryani",
+        price: 210
+    },
 
+    {
+        name: "Chicken Joint Biryani",
+        price: 220
+    },
+
+    {
+        name: "Food Item 4",
+        price: 150
+    },
+
+    {
+        name: "Food Item 5",
+        price: 160
+    },
+
+    {
+        name: "Food Item 6",
+        price: 180
+    },
+
+    {
+        name: "Food Item 7",
+        price: 190
+    },
+
+    {
+        name: "Food Item 8",
+        price: 200
+    },
+
+    {
+        name: "Food Item 9",
+        price: 170
+    },
+
+    {
+        name: "Food Item 10",
+        price: 180
+    },
+
+    {
+        name: "Food Item 11",
+        price: 210
+    },
+
+    {
+        name: "Food Item 12",
+        price: 220
     }
 
-
-    document.getElementById("quantity-" + item).textContent =
-        quantities[item];
+];
 
 
-    document.getElementById("price-" + item).textContent =
-        "₹" + (quantities[item] * prices[item]);
+const quantities = new Array(foods.length).fill(0);
 
 
-    updateTotal();
+/* =========================
+   ADD TO CART
+   ========================= */
+
+function addToCart(item) {
+
+    quantities[item]++;
+
+    updateCart();
 
 }
 
 
-function updateTotal() {
+/* =========================
+   REMOVE FROM CART
+   ========================= */
+
+function removeFromCart(item) {
+
+    if (quantities[item] > 0) {
+
+        quantities[item]--;
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =========================
+   UPDATE CART
+   ========================= */
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cart-items");
 
     let totalItems = 0;
 
     let totalPrice = 0;
 
+    let cartHTML = "";
 
-    for (let i = 0; i < quantities.length; i++) {
 
-        totalItems += quantities[i];
+    for (let i = 0; i < foods.length; i++) {
 
-        totalPrice += quantities[i] * prices[i];
+        if (quantities[i] > 0) {
+
+            const itemTotal =
+                quantities[i] * foods[i].price;
+
+            totalItems += quantities[i];
+
+            totalPrice += itemTotal;
+
+
+            cartHTML += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <h4>${foods[i].name}</h4>
+
+                        <span>
+                            ₹${foods[i].price} × ${quantities[i]}
+                        </span>
+
+                    </div>
+
+
+                    <div class="cart-controls">
+
+                        <button onclick="removeFromCart(${i})">
+                            −
+                        </button>
+
+                        <strong>
+                            ${quantities[i]}
+                        </strong>
+
+                        <button onclick="addToCart(${i})">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
 
     }
+
+
+    if (totalItems === 0) {
+
+        cartHTML = `
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+        `;
+
+    }
+
+
+    cartItems.innerHTML = cartHTML;
 
 
     document.getElementById("total-items").textContent =
@@ -227,29 +856,171 @@ function updateTotal() {
     document.getElementById("total-price").textContent =
         totalPrice;
 
+
+    document.getElementById("cart-count").textContent =
+        totalItems + (totalItems === 1 ? " item" : " items");
+
 }
 
 
+/* =========================
+   WHATSAPP ORDER
+   ========================= */
+
+function orderOnWhatsApp() {
+
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+    let message = "🍽️ *NEW ORDER - TOM'S RESTAURANT*%0A%0A";
+
+
+    for (let i = 0; i < foods.length; i++) {
+
+        if (quantities[i] > 0) {
+
+            const itemTotal =
+                quantities[i] * foods[i].price;
+
+            totalItems += quantities[i];
+
+            totalPrice += itemTotal;
+
+
+            message +=
+                "• " +
+                foods[i].name +
+                " × " +
+                quantities[i] +
+                " = ₹" +
+                itemTotal +
+                "%0A";
+
+        }
+
+    }
+
+
+    if (totalItems === 0) {
+
+        alert("Please add at least one item to your cart.");
+
+        return;
+
+    }
+
+
+    message +=
+        "%0A*Total Items:* " +
+        totalItems;
+
+
+    message +=
+        "%0A*Total Amount:* ₹" +
+        totalPrice;
+
+
+    message +=
+        "%0A%0AHello, I would like to place this order.";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        message;
+
+
+    window.open(whatsappURL, "_blank");
+
+}
+
+
+/* =========================
+   THREE DOT MENU
+   ========================= */
+
 function toggleMenu() {
 
-    const menu = document.getElementById("options-menu");
+    const menu =
+        document.getElementById("options-menu");
+
+    menu.classList.toggle("show");
+
+}
 
 
-    if (menu.style.display === "block") {
+/* =========================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+   ========================= */
 
-        menu.style.display = "none";
+document.addEventListener("click", function(event) {
 
-    } else {
+    const menu =
+        document.getElementById("options-menu");
 
-        menu.style.display = "block";
+    const dots =
+        document.querySelector(".three-dots");
+
+
+    if (!dots.contains(event.target)) {
+
+        menu.classList.remove("show");
+
+    }
+
+});
+
+
+/* =========================
+   CALL RESTAURANT
+   ========================= */
+
+function callRestaurant() {
+
+    window.location.href =
+        "tel:+91XXXXXXXXXX";
+
+}
+
+
+/* =========================
+   REPORT PROBLEM
+   ========================= */
+
+function reportProblem() {
+
+    alert(
+        "Thank you for helping us improve. Please contact the restaurant to report a problem."
+    );
+
+}
+
+
+/* =========================
+   SUGGEST IDEA
+   ========================= */
+
+function suggestIdea() {
+
+    const idea =
+        prompt("Please enter your suggestion:");
+
+    if (idea) {
+
+        alert(
+            "Thank you for your suggestion! ❤️"
+        );
 
     }
 
 }
 
-</script>
 
+</script>
 
 </body>
 
 </html>
+```
