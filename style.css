@@ -704,3 +704,38 @@ footer p {
 
 }
 ```
+/* =========================
+   ITEM QUANTITY + ITEM TOTAL
+   ========================= */
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-control button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    background: #f5b84b;
+    color: #24140d;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quantity-control span {
+    min-width: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item-total {
+    color: #f5b84b;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+}
