@@ -5,753 +5,456 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tom's Restaurant</title>
-
-    <!-- Keep your existing CSS design -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Required styling for the delivery popup -->
-    <style>
-        .delivery-popup {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            overflow-y: auto;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .delivery-popup.show {
-            display: flex;
-        }
-
-        .delivery-box {
-            background: white;
-            color: #222;
-            width: 100%;
-            max-width: 450px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 25px;
-            border-radius: 12px;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .delivery-box h2 {
-            margin-top: 5px;
-        }
-
-        .delivery-box label {
-            display: block;
-            margin-top: 12px;
-            margin-bottom: 5px;
-        }
-
-        .delivery-box input:not([type="checkbox"]),
-        .delivery-box textarea {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font: inherit;
-        }
-
-        .delivery-box textarea {
-            min-height: 85px;
-            resize: vertical;
-        }
-
-        .delivery-box button {
-            cursor: pointer;
-        }
-
-        .popup-close {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            border: none;
-            background: transparent;
-            font-size: 28px;
-            color: #333;
-        }
-
-        .returning-option {
-            display: flex !important;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .returning-option input {
-            width: auto !important;
-        }
-
-        .location-btn,
-        .confirm-order-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 12px;
-            border: none;
-            border-radius: 6px;
-        }
-
-        .location-btn {
-            background: #eee;
-            color: #222;
-        }
-
-        .confirm-order-btn {
-            background: #25D366;
-            color: white;
-            font-weight: bold;
-        }
-
-        #location-status {
-            font-size: 13px;
-            overflow-wrap: anywhere;
-        }
-
-        [hidden] {
-            display: none !important;
-        }
-    </style>
 </head>
-
 <body>
 
     <!-- THREE-DOT MENU -->
     <div class="three-dots">
         <button type="button" onclick="toggleMenu()" aria-label="Open menu">⋮</button>
-
-        <div id="options-menu" hidden>
+        <div class="options-menu" id="options-menu">
             <button type="button" onclick="callRestaurant()">📞 Call Restaurant</button>
             <button type="button" onclick="reportProblem()">⚠️ Report a Problem</button>
             <button type="button" onclick="suggestFood()">🍽️ Suggest a Food</button>
         </div>
     </div>
 
-    <!-- RESTAURANT HEADER -->
-    <header>
-        <h1>Tom's Restaurant</h1>
-        <p>Delicious food, made with love!</p>
-    </header>
+    <!-- HERO -->
+    <section class="hero">
+        <img src="tom's-restuarant.jpg.jpeg" alt="Tom's Restaurant">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <span class="welcome-text">WELCOME TO</span>
+            <h1>Tom's Restaurant</h1>
+            <p>Delicious food, made with love!</p>
+            <a href="#food-menu" class="view-menu-btn">View Menu</a>
+        </div>
+    </section>
 
-    <!-- FOOD MENU -->
-    <main>
-        <section class="menu" id="food-menu">
+    <!-- MENU -->
+    <section class="menu" id="food-menu">
+        <div class="section-heading">
+            <span>OUR MENU</span>
+            <h2>Choose Your Favourite</h2>
+            <p>Fresh food, delicious taste.</p>
+        </div>
 
-            <div class="food-item">
-                <img src="tom's-restuarant.jpg.jpeg" alt="Special Biryani">
-                <h3>Special Biryani</h3>
-                <p>₹200</p>
-                <button type="button" onclick="addToCart(0)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-0">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="chicken-biryani.jpg.jpeg" alt="Chicken Biryani">
-                <h3>Chicken Biryani</h3>
-                <p>₹210</p>
-                <button type="button" onclick="addToCart(1)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-1">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="chicken-fry-piece-biryani.jpg.jpeg" alt="Chicken Fry Piece Biryani">
-                <h3>Chicken Fry Piece Biryani</h3>
-                <p>₹220</p>
-                <button type="button" onclick="addToCart(2)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-2">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="chicken-joint-biryani.jpg.jpeg" alt="Chicken Joint Biryani">
-                <h3>Chicken Joint Biryani</h3>
-                <p>₹150</p>
-                <button type="button" onclick="addToCart(3)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-3">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food4.jpg" alt="Food Item 5">
-                <h3>Food Item 5</h3>
-                <p>₹160</p>
-                <button type="button" onclick="addToCart(4)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-4">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food5.jpg" alt="Food Item 6">
-                <h3>Food Item 6</h3>
-                <p>₹180</p>
-                <button type="button" onclick="addToCart(5)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-5">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food6.jpg" alt="Food Item 7">
-                <h3>Food Item 7</h3>
-                <p>₹190</p>
-                <button type="button" onclick="addToCart(6)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-6">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food7.jpg" alt="Food Item 8">
-                <h3>Food Item 8</h3>
-                <p>₹200</p>
-                <button type="button" onclick="addToCart(7)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-7">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food8.jpg" alt="Food Item 9">
-                <h3>Food Item 9</h3>
-                <p>₹170</p>
-                <button type="button" onclick="addToCart(8)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-8">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food9.jpg" alt="Food Item 10">
-                <h3>Food Item 10</h3>
-                <p>₹180</p>
-                <button type="button" onclick="addToCart(9)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-9">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food10.jpg" alt="Food Item 11">
-                <h3>Food Item 11</h3>
-                <p>₹210</p>
-                <button type="button" onclick="addToCart(10)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-10">Added: 0</div>
-            </div>
-
-            <div class="food-item">
-                <img src="food11.jpg" alt="Food Item 12">
-                <h3>Food Item 12</h3>
-                <p>₹220</p>
-                <button type="button" onclick="addToCart(11)">Add to Cart</button>
-                <div class="item-quantity" id="quantity-11">Added: 0</div>
-            </div>
-
-        </section>
+        <div class="food-container" id="food-container"></div>
 
         <!-- CART -->
-        <section class="cart" id="cart">
-            <h2>Your Cart</h2>
-            <div id="cart-items">
-                <p>Your cart is empty.</p>
+        <div class="cart-box" id="cart">
+            <div class="cart-title">
+                <h2>Your Cart</h2>
+                <span id="cart-count">0 items</span>
             </div>
 
-            <h3>Total: ₹<span id="total-price">0</span></h3>
+            <div id="cart-items">
+                <p class="empty-cart">Your cart is empty.</p>
+            </div>
 
-            <button
-                type="button"
-                class="order-btn"
-                onclick="orderOnWhatsApp()">
+            <div class="cart-summary">
+                <div class="summary-row total-row">
+                    <strong>Total</strong>
+                    <strong>₹<span id="total-price">0</span></strong>
+                </div>
+            </div>
+
+            <button type="button" class="order-btn" onclick="orderOnWhatsApp()">
                 💬 Order on WhatsApp
             </button>
-        </section>
-    </main>
+            <p class="order-note">Review your items before placing your order.</p>
+        </div>
+    </section>
 
-    <!-- DELIVERY ADDRESS POPUP -->
-    <div id="delivery-popup" class="delivery-popup">
-        <div class="delivery-box" id="delivery-box">
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="about-content">
+            <span>ABOUT US</span>
+            <h2>Welcome to Tom's Restaurant</h2>
+            <p>Enjoy delicious food prepared with care. Choose your favourite items and place your order easily through WhatsApp.</p>
+        </div>
+    </section>
 
-            <button
-                type="button"
-                class="popup-close"
-                onclick="closeDeliveryPopup()"
-                aria-label="Close">&times;</button>
+    <!-- REVIEWS -->
+    <section class="reviews">
+        <div class="section-heading">
+            <span>CUSTOMER FEEDBACK</span>
+            <h2>What People Say</h2>
+        </div>
+        <div class="review-container">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>Delicious food and a great experience.</p>
+                <strong>Happy Customer</strong>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>Enjoyed the food and the taste.</p>
+                <strong>Happy Customer</strong>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>Looking forward to ordering again.</p>
+                <strong>Happy Customer</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Tom's Restaurant</h3>
+        <p>Delicious food, made with love!</p>
+        <p>Thank you for visiting us.</p>
+    </footer>
+
+    <!-- DELIVERY POPUP -->
+    <div class="delivery-popup" id="delivery-popup">
+        <div class="delivery-box">
+            <button type="button" class="popup-close"
+                onclick="closeDeliveryPopup()" aria-label="Close">&times;</button>
 
             <h2>Delivery Details</h2>
             <p>Enter your delivery information to continue to WhatsApp.</p>
 
             <label class="returning-option">
-                <input
-                    type="checkbox"
-                    id="visited-before"
+                <input type="checkbox" id="visited-before"
                     onchange="toggleReturningCustomer()">
                 Have you visited this restaurant before?
             </label>
 
             <p id="returning-note" hidden>
-                Welcome back! Your saved delivery details will be used.
+                Welcome back! Your saved details will be used.
             </p>
 
             <form id="delivery-form">
-
                 <div id="first-time-fields">
-
                     <label for="customer-address">Delivery Address</label>
-                    <textarea
-                        id="customer-address"
+                    <textarea id="customer-address"
                         placeholder="House number, street, area, landmark"
                         required></textarea>
 
                     <label>Delivery Location</label>
-                    <button
-                        type="button"
-                        class="location-btn"
-                        onclick="useCurrentLocation()">
-                        📍 Use Current Location
-                    </button>
-
-                    <p id="location-status">
-                        Or enter your address manually above.
-                    </p>
-
+                    <button type="button" class="location-btn"
+                        onclick="useCurrentLocation()">📍 Use Current Location</button>
+                    <p id="location-status">Or enter your address manually above.</p>
                     <input type="hidden" id="customer-location">
 
                     <label for="customer-phone">Primary Contact Number</label>
-                    <input
-                        type="tel"
-                        id="customer-phone"
+                    <input type="tel" id="customer-phone"
                         placeholder="Enter 10-digit phone number"
-                        pattern="[0-9]{10}"
-                        maxlength="10"
-                        inputmode="numeric"
-                        required>
+                        pattern="[0-9]{10}" maxlength="10"
+                        inputmode="numeric" required>
 
                     <label for="customer-phone2">Alternate Contact Number</label>
-                    <input
-                        type="tel"
-                        id="customer-phone2"
+                    <input type="tel" id="customer-phone2"
                         placeholder="Enter alternate 10-digit number"
-                        pattern="[0-9]{10}"
-                        maxlength="10"
-                        inputmode="numeric"
-                        required>
-
+                        pattern="[0-9]{10}" maxlength="10"
+                        inputmode="numeric" required>
                 </div>
 
                 <div id="saved-customer-details" hidden></div>
 
-                <button
-                    type="button"
-                    id="change-details-btn"
-                    class="location-btn"
-                    onclick="editDeliveryDetails()"
-                    hidden>
+                <button type="button" id="change-details-btn"
+                    class="location-btn" onclick="editDeliveryDetails()" hidden>
                     ✏️ Change Address / Contact Details
                 </button>
 
                 <button type="submit" class="confirm-order-btn">
                     Continue to WhatsApp
                 </button>
-
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // YOUR WHATSAPP NUMBER WITH COUNTRY CODE.
-        // India country code = 91. Do not use + or spaces.
+        // Replace this with your restaurant's WhatsApp number.
+        // Use country code, without + or spaces.
         const whatsappNumber = "919701846382";
-
         const customerStorageKey = "tomsRestaurantCustomer";
 
+        // Update item names, prices, and filenames here when needed.
         const foods = [
-            { name: "Special Biryani", price: 200 },
-            { name: "Chicken Biryani", price: 210 },
-            { name: "Chicken Fry Piece Biryani", price: 220 },
-            { name: "Chicken Joint Biryani", price: 150 },
-            { name: "Food Item 5", price: 160 },
-            { name: "Food Item 6", price: 180 },
-            { name: "Food Item 7", price: 190 },
-            { name: "Food Item 8", price: 200 },
-            { name: "Food Item 9", price: 170 },
-            { name: "Food Item 10", price: 180 },
-            { name: "Food Item 11", price: 210 },
-            { name: "Food Item 12", price: 220 }
+            { name: "Special Biryani", price: 200, image: "tom's-restuarant.jpg.jpeg" },
+            { name: "Chicken Biryani", price: 210, image: "chicken-biryani.jpg.jpeg" },
+            { name: "Chicken Fry Piece Biryani", price: 220, image: "chicken-fry-piece-biryani.jpg.jpeg" },
+            { name: "Chicken Joint Biryani", price: 150, image: "chicken-joint-biryani.jpg.jpeg" },
+            { name: "Food Item 5", price: 160, image: "food4.jpg" },
+            { name: "Food Item 6", price: 180, image: "food5.jpg" },
+            { name: "Food Item 7", price: 190, image: "food6.jpg" },
+            { name: "Food Item 8", price: 200, image: "food7.jpg" },
+            { name: "Food Item 9", price: 170, image: "food8.jpg" },
+            { name: "Food Item 10", price: 180, image: "food9.jpg" },
+            { name: "Food Item 11", price: 210, image: "food10.jpg" },
+            { name: "Food Item 12", price: 220, image: "food11.jpg" }
         ];
 
-        let quantities = new Array(foods.length).fill(0);
+        const quantities = new Array(foods.length).fill(0);
         let orderLocation = "";
 
-        // ADD FOOD TO CART
+        // CREATE FOOD CARDS
+        function renderMenu() {
+            const container = document.getElementById("food-container");
+
+            container.innerHTML = foods.map((food, index) => `
+                <article class="food-card">
+                    <img src="${escapeHTML(food.image)}"
+                         alt="${escapeHTML(food.name)}"
+                         loading="lazy">
+                    <div class="food-info">
+                        <h3>${escapeHTML(food.name)}</h3>
+                        <p class="food-description">Fresh and delicious.</p>
+                        <div class="food-bottom">
+                            <span class="item-price">₹${food.price}</span>
+                            <button class="add-btn" type="button"
+                                onclick="addToCart(${index})">Add +</button>
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, ch => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;",
+                '"': "&quot;", "'": "&#39;"
+            })[ch]);
+        }
+
         function addToCart(index) {
             quantities[index]++;
             updateCart();
         }
 
-        // REMOVE ONE ITEM FROM CART
         function removeFromCart(index) {
-            if (quantities[index] > 0) {
-                quantities[index]--;
-            }
-
+            if (quantities[index] > 0) quantities[index]--;
             updateCart();
         }
 
-        // UPDATE ITEM COUNTS AND TOTAL PRICE
+        // SHOW EACH ITEM'S QUANTITY AND TOTAL PRICE
         function updateCart() {
+            const cart = document.getElementById("cart-items");
             let total = 0;
-            let totalItems = 0;
-            let cartHTML = "";
+            let itemCount = 0;
+            let html = "";
 
             foods.forEach((food, index) => {
                 const quantity = quantities[index];
+                if (!quantity) return;
 
-                document.getElementById("quantity-" + index).textContent =
-                    "Added: " + quantity;
+                const itemTotal = food.price * quantity;
+                total += itemTotal;
+                itemCount += quantity;
 
-                if (quantity > 0) {
-                    const itemTotal = food.price * quantity;
-
-                    total += itemTotal;
-                    totalItems += quantity;
-
-                    cartHTML += `
-                        <div class="cart-item">
-                            <p>
-                                <strong>${food.name}</strong>
-                                <br>
-                                ₹${food.price} × ${quantity}
-                                = ₹${itemTotal}
-                            </p>
-
-                            <button
-                                type="button"
-                                onclick="removeFromCart(${index})">
-                                −
-                            </button>
-
-                            <span>${quantity}</span>
-
-                            <button
-                                type="button"
-                                onclick="addToCart(${index})">
-                                +
-                            </button>
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${escapeHTML(food.name)}</h4>
+                            <span>₹${food.price} each</span>
+                            <div class="item-total">Item total: ₹${itemTotal}</div>
                         </div>
-                    `;
-                }
+                        <div class="quantity-control">
+                            <button type="button"
+                                onclick="removeFromCart(${index})"
+                                aria-label="Remove one ${escapeHTML(food.name)}">−</button>
+                            <span>${quantity}</span>
+                            <button type="button"
+                                onclick="addToCart(${index})"
+                                aria-label="Add one ${escapeHTML(food.name)}">+</button>
+                        </div>
+                    </div>
+                `;
             });
 
-            if (totalItems === 0) {
-                cartHTML = "<p>Your cart is empty.</p>";
-            }
-
-            document.getElementById("cart-items").innerHTML = cartHTML;
+            cart.innerHTML = html || '<p class="empty-cart">Your cart is empty.</p>';
             document.getElementById("total-price").textContent = total;
+            document.getElementById("cart-count").textContent =
+                itemCount + (itemCount === 1 ? " item" : " items");
         }
 
-        // OPEN DELIVERY FORM WHEN ORDER BUTTON IS CLICKED
+        // OPEN DELIVERY POPUP
         function orderOnWhatsApp() {
-            const totalItems = quantities.reduce(
-                (sum, quantity) => sum + quantity, 0
-            );
-
-            if (totalItems === 0) {
+            if (!quantities.some(q => q > 0)) {
                 alert("Please add at least one food item to your cart.");
                 return;
             }
 
-            const popup = document.getElementById("delivery-popup");
-            const savedCustomer = getSavedCustomer();
+            document.getElementById("delivery-popup").classList.add("show");
 
-            popup.classList.add("show");
-
-            const visitedCheckbox =
-                document.getElementById("visited-before");
-
-            visitedCheckbox.checked = !!savedCustomer;
-
+            const saved = getSavedCustomer();
+            document.getElementById("visited-before").checked = !!saved;
             toggleReturningCustomer();
 
-            // Bring the delivery box into view.
-            document.getElementById("delivery-box").scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+            document.querySelector(".delivery-box").scrollTop = 0;
         }
 
-        // CLOSE DELIVERY FORM
         function closeDeliveryPopup() {
             document.getElementById("delivery-popup").classList.remove("show");
         }
 
-        // READ SAVED CUSTOMER DETAILS SAFELY
         function getSavedCustomer() {
             try {
-                const saved = localStorage.getItem(customerStorageKey);
-                return saved ? JSON.parse(saved) : null;
-            } catch (error) {
+                return JSON.parse(localStorage.getItem(customerStorageKey)) || null;
+            } catch {
                 return null;
             }
         }
 
-        // ENABLE OR DISABLE FIRST-TIME CUSTOMER FIELDS
-        function setCustomerFieldsEnabled(enabled) {
-            const fields = document.querySelectorAll(
-                "#first-time-fields input, #first-time-fields textarea"
-            );
-
-            fields.forEach(field => {
-                field.disabled = !enabled;
-            });
-        }
-
-        // HANDLE RETURNING CUSTOMER CHECKBOX
         function toggleReturningCustomer() {
             const checkbox = document.getElementById("visited-before");
-            const savedCustomer = getSavedCustomer();
+            const saved = getSavedCustomer();
 
-            const fields = document.getElementById("first-time-fields");
-            const savedDetails =
-                document.getElementById("saved-customer-details");
-
-            const note = document.getElementById("returning-note");
-            const changeButton =
-                document.getElementById("change-details-btn");
-
-            if (checkbox.checked && !savedCustomer) {
-                alert(
-                    "No saved delivery details were found on this browser. " +
-                    "Please enter your details."
-                );
-
+            if (checkbox.checked && !saved) {
+                alert("No saved details found. Please enter your delivery details.");
                 checkbox.checked = false;
             }
 
-            const useSavedDetails = checkbox.checked && !!savedCustomer;
+            const useSaved = checkbox.checked && !!saved;
+            document.getElementById("first-time-fields").hidden = useSaved;
+            document.getElementById("returning-note").hidden = !useSaved;
+            document.getElementById("saved-customer-details").hidden = !useSaved;
+            document.getElementById("change-details-btn").hidden = !useSaved;
 
-            fields.hidden = useSavedDetails;
-            setCustomerFieldsEnabled(!useSavedDetails);
+            document.querySelectorAll("#first-time-fields input, #first-time-fields textarea")
+                .forEach(el => {
+                    el.disabled = useSaved;
+                });
 
-            savedDetails.hidden = !useSavedDetails;
-            note.hidden = !useSavedDetails;
-            changeButton.hidden = !useSavedDetails;
-
-            if (useSavedDetails) {
-                savedDetails.innerHTML = `
-                    <p><strong>Saved Address:</strong><br>
-                    ${escapeHTML(savedCustomer.address)}</p>
-
-                    <p><strong>Primary Contact:</strong><br>
-                    ${escapeHTML(savedCustomer.phone)}</p>
-
-                    <p><strong>Alternate Contact:</strong><br>
-                    ${escapeHTML(savedCustomer.phone2)}</p>
+            if (useSaved) {
+                document.getElementById("saved-customer-details").innerHTML = `
+                    <p><strong>Address:</strong><br>${escapeHTML(saved.address)}</p>
+                    <p><strong>Primary phone:</strong><br>${escapeHTML(saved.phone)}</p>
+                    <p><strong>Alternate phone:</strong><br>${escapeHTML(saved.phone2)}</p>
                 `;
-
-                orderLocation = savedCustomer.location || "";
+                orderLocation = saved.location || "";
             } else {
-                savedDetails.innerHTML = "";
+                document.getElementById("saved-customer-details").innerHTML = "";
             }
         }
 
-        // SAFELY DISPLAY SAVED TEXT
-        function escapeHTML(value) {
-            return String(value || "").replace(/[&<>"']/g, character => {
-                const replacements = {
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#39;"
-                };
-
-                return replacements[character];
-            });
-        }
-
-        // EDIT SAVED ADDRESS AND PHONE NUMBERS
         function editDeliveryDetails() {
-            const savedCustomer = getSavedCustomer();
+            const saved = getSavedCustomer();
+            if (!saved) return;
 
-            if (!savedCustomer) {
-                return;
-            }
-
-            document.getElementById("customer-address").value =
-                savedCustomer.address || "";
-
-            document.getElementById("customer-phone").value =
-                savedCustomer.phone || "";
-
-            document.getElementById("customer-phone2").value =
-                savedCustomer.phone2 || "";
-
-            document.getElementById("customer-location").value =
-                savedCustomer.location || "";
-
-            orderLocation = savedCustomer.location || "";
-
+            document.getElementById("customer-address").value = saved.address || "";
+            document.getElementById("customer-phone").value = saved.phone || "";
+            document.getElementById("customer-phone2").value = saved.phone2 || "";
+            document.getElementById("customer-location").value = saved.location || "";
             document.getElementById("location-status").textContent =
-                orderLocation
-                    ? "Saved location: " + orderLocation
-                    : "Or enter your address manually above.";
+                saved.location ? "Saved location is available." :
+                "Or enter your address manually above.";
 
             document.getElementById("visited-before").checked = false;
-
             toggleReturningCustomer();
         }
 
-        // GET CURRENT LOCATION
         function useCurrentLocation() {
             const status = document.getElementById("location-status");
 
             if (!navigator.geolocation) {
-                status.textContent =
-                    "Location is not supported by this browser. Enter your address manually.";
+                status.textContent = "Location is not supported. Enter your address manually.";
                 return;
             }
 
             status.textContent = "Getting your location...";
 
             navigator.geolocation.getCurrentPosition(
-                function(position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-
-                    orderLocation =
-                        "https://www.google.com/maps?q=" +
-                        latitude + "," + longitude;
-
-                    document.getElementById("customer-location").value =
-                        orderLocation;
-
-                    status.textContent =
-                        "Location selected: " + latitude + ", " + longitude;
+                position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    orderLocation = `https://www.google.com/maps?q=${lat},${lon}`;
+                    document.getElementById("customer-location").value = orderLocation;
+                    status.textContent = `Location selected: ${lat}, ${lon}`;
                 },
-
-                function() {
-                    status.textContent =
-                        "Could not get location. Allow location access or enter your address manually.";
+                () => {
+                    status.textContent = "Location unavailable. Allow location access or enter your address manually.";
                 },
-
-                {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 0
-                }
+                { enableHighAccuracy: true, timeout: 10000 }
             );
         }
 
-        // SUBMIT DELIVERY DETAILS AND OPEN WHATSAPP
-        document.getElementById("delivery-form").addEventListener(
-            "submit",
-            function(event) {
-                event.preventDefault();
+        // VALIDATE DETAILS, THEN OPEN WHATSAPP
+        document.getElementById("delivery-form").addEventListener("submit", event => {
+            event.preventDefault();
 
-                const totalItems = quantities.reduce(
-                    (sum, quantity) => sum + quantity, 0
-                );
+            if (!quantities.some(q => q > 0)) {
+                alert("Your cart is empty.");
+                closeDeliveryPopup();
+                return;
+            }
 
-                if (totalItems === 0) {
-                    alert("Your cart is empty. Please add food first.");
-                    closeDeliveryPopup();
+            let customer;
+
+            if (document.getElementById("visited-before").checked) {
+                customer = getSavedCustomer();
+                if (!customer) {
+                    alert("Saved details not found. Please enter your details.");
+                    return;
+                }
+            } else {
+                customer = {
+                    address: document.getElementById("customer-address").value.trim(),
+                    phone: document.getElementById("customer-phone").value.trim(),
+                    phone2: document.getElementById("customer-phone2").value.trim(),
+                    location: document.getElementById("customer-location").value.trim() || orderLocation
+                };
+
+                if (!customer.address ||
+                    !/^[0-9]{10}$/.test(customer.phone) ||
+                    !/^[0-9]{10}$/.test(customer.phone2)) {
+                    alert("Enter your address and both valid 10-digit phone numbers.");
                     return;
                 }
 
-                const useSavedDetails =
-                    document.getElementById("visited-before").checked;
-
-                let customer;
-
-                if (useSavedDetails) {
-                    customer = getSavedCustomer();
-
-                    if (!customer) {
-                        alert("Saved details were not found. Please enter your details.");
-                        return;
-                    }
-                } else {
-                    const address =
-                        document.getElementById("customer-address").value.trim();
-
-                    const phone =
-                        document.getElementById("customer-phone").value.trim();
-
-                    const phone2 =
-                        document.getElementById("customer-phone2").value.trim();
-
-                    const location =
-                        document.getElementById("customer-location").value.trim();
-
-                    if (!address || !/^[0-9]{10}$/.test(phone) ||
-                        !/^[0-9]{10}$/.test(phone2)) {
-                        alert(
-                            "Please enter your address and both valid 10-digit phone numbers."
-                        );
-                        return;
-                    }
-
-                    customer = {
-                        address: address,
-                        phone: phone,
-                        phone2: phone2,
-                        location: location || orderLocation || ""
-                    };
-
-                    try {
-                        localStorage.setItem(
-                            customerStorageKey,
-                            JSON.stringify(customer)
-                        );
-                    } catch (error) {
-                        // The order can continue even if saving is unavailable.
-                    }
+                try {
+                    localStorage.setItem(customerStorageKey, JSON.stringify(customer));
+                } catch (error) {
+                    // Ordering can still continue if browser storage is unavailable.
                 }
-
-                const lines = [];
-                let total = 0;
-
-                lines.push("Hello Tom's Restaurant!");
-                lines.push("");
-                lines.push("I would like to place an order:");
-                lines.push("");
-
-                foods.forEach((food, index) => {
-                    if (quantities[index] > 0) {
-                        const itemTotal = food.price * quantities[index];
-                        total += itemTotal;
-
-                        lines.push(
-                            food.name + " × " + quantities[index] +
-                            " = ₹" + itemTotal
-                        );
-                    }
-                });
-
-                lines.push("");
-                lines.push("Total Items: " + totalItems);
-                lines.push("Total Price: ₹" + total);
-                lines.push("");
-                lines.push("Delivery Address: " + customer.address);
-                lines.push("Primary Contact: " + customer.phone);
-                lines.push("Alternate Contact: " + customer.phone2);
-
-                if (customer.location) {
-                    lines.push("Delivery Location: " + customer.location);
-                }
-
-                lines.push("");
-                lines.push("Please confirm my order.");
-
-                const message = encodeURIComponent(lines.join("\n"));
-
-                const url =
-                    "https://wa.me/" + whatsappNumber +
-                    "?text=" + message;
-
-                // Use the current tab to avoid popup-blocker problems.
-                window.location.href = url;
             }
-        );
 
-        // THREE-DOT MENU
+            const lines = [
+                "Hello Tom's Restaurant!",
+                "",
+                "I would like to place an order:",
+                ""
+            ];
+
+            let total = 0;
+            let count = 0;
+
+            foods.forEach((food, index) => {
+                if (quantities[index] > 0) {
+                    const itemTotal = food.price * quantities[index];
+                    total += itemTotal;
+                    count += quantities[index];
+                    lines.push(`${food.name} x ${quantities[index]} = ₹${itemTotal}`);
+                }
+            });
+
+            lines.push(
+                "",
+                `Total Items: ${count}`,
+                `Total Price: ₹${total}`,
+                "",
+                `Delivery Address: ${customer.address}`,
+                `Primary Contact: ${customer.phone}`,
+                `Alternate Contact: ${customer.phone2}`
+            );
+
+            if (customer.location) lines.push(`Delivery Location: ${customer.location}`);
+
+            lines.push("", "Please confirm my order.");
+
+            const url = "https://wa.me/" + whatsappNumber +
+                "?text=" + encodeURIComponent(lines.join("\n"));
+
+            // Navigate in the same tab to avoid popup-blocker issues.
+            window.location.href = url;
+        });
+
+        // MENU AND CONTACT ACTIONS
         function toggleMenu() {
-            const menu = document.getElementById("options-menu");
-            menu.hidden = !menu.hidden;
+            document.getElementById("options-menu").classList.toggle("show");
         }
 
         function callRestaurant() {
@@ -759,30 +462,22 @@
         }
 
         function reportProblem() {
-            const message = encodeURIComponent(
-                "Hello, I would like to report a problem with the restaurant website."
-            );
-
-            window.open(
-                "https://wa.me/" + whatsappNumber + "?text=" + message,
-                "_blank"
-            );
+            openWhatsAppMessage("Hello, I would like to report a problem with the restaurant website.");
         }
 
         function suggestFood() {
-            const message = encodeURIComponent(
-                "Hello! I would like to suggest a food item for your restaurant."
-            );
-
-            window.open(
-                "https://wa.me/" + whatsappNumber + "?text=" + message,
-                "_blank"
-            );
+            openWhatsAppMessage("Hello! I would like to suggest a food item for your restaurant.");
         }
 
-        // INITIAL CART DISPLAY
+        function openWhatsAppMessage(message) {
+            const url = "https://wa.me/" + whatsappNumber +
+                "?text=" + encodeURIComponent(message);
+            window.location.href = url;
+        }
+
+        // INITIALISE WEBSITE
+        renderMenu();
         updateCart();
     </script>
-
 </body>
 </html>
