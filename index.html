@@ -1096,79 +1096,149 @@ function updateCart() {
    ========================= */
 
 function orderOnWhatsApp() {
-
-    let totalItems = 0;
-
-    let totalPrice = 0;
-
-    let message =
-        "🍽️ *NEW ORDER - TOM'S RESTAURANT*%0A%0A";
-
-
-    for (let i = 0; i < foods.length; i++) {
-
-        if (quantities[i] > 0) {
-
-            const itemTotal =
-                quantities[i] * foods[i].price;
-
-            totalItems += quantities[i];
-
-            totalPrice += itemTotal;
-
-
-            message +=
-                "• " +
-                foods[i].name +
-                " × " +
-                quantities[i] +
-                " = ₹" +
-                itemTotal +
-                "%0A";
-
-        }
-
-    }
-
-
-    if (totalItems === 0) {
-
-        alert(
-            "Please add at least one item to your cart."
-        );
-
-        return;
-
-    }
-
-
-    message +=
-        "%0A*Total Items:* " +
-        totalItems;
-
-
-    message +=
-        "%0A*Total Amount:* ₹" +
-        totalPrice;
-
-
-    message +=
-        "%0A%0AHello, I would like to place this order.";
-
-
-    const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        message;
-
-
-    window.open(
-        whatsappURL,
-        "_blank"
+    let totalItems = quantities.reduce(
+        (sum, quantity) => sum + quantity, 0
     );
 
+    if (totalItems === 0) {
+        alert("Please add at least one item to your cart.");
+        return;
+    }
+
+    const popup = document.getElementById("delivery-popup");
+    const saved = localStorage.getItem("tomsRestaurantCustomer");
+
+    popup.classList.add("show");
+
+    document.getElementById("first-time-fields").hidden = !!saved;
+    document.getElementById("saved-customer-details").hidden = !saved;
+    document.getElementById("change-details-btn").hidden = !saved;
+
+    if (saved) {
+        const c = JSON.parse(saved);
+        document.getElementById("saved-customer-details").textContent =
+            "Address: " + c.address +
+            " | Primary: " + c.phone +
+            " | Alternate: " + c.phone2;
+        orderLocation = c.location || "";
+    }
 }
+
+function closeDeliveryPopup() {
+    document.getElementById("delivery-popup").classList.remove("show");
+}
+
+function editDeliveryDetails() {
+    const c = JSON.parse(localStorage.getItem("tomsRestaurantCustomer"));
+    if (!c) return;
+
+    document.getElementById("customer-address").value = c.address;
+    document.getElementById("customer-phone").value = c.phone;
+    document.getElementById("customer-phone2").value = c.phone2;
+    document.getElementById("customer-location").value = c.location || "";
+    orderLocation = c.location || "";
+
+    document.getElementById("first-time-fields").hidden = false;
+    document.getElementById("saved-customer-details").hidden = true;
+    document.getElementById("change-details-btn").hidden = true;
+}
+
+let orderLocation = "";
+
+function useCurrentLocation() {
+    const status = document.getElementById("location-status");
+
+    if (!navigator.geolocation) {
+        status.textContent = "Location is not supported by your browser.";
+        return;
+    }
+
+    status.textContent = "Getting your location...";
+
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            orderLocation =
+                "https://www.google.com/maps?q=" +
+                position.coords.latitude + "," +
+                position.coords.longitude;
+
+            document.getElementById("customer-location").value = orderLocation;
+            status.textContent = "Location added successfully.";
+        },
+        () => {
+            status.textContent =
+                "Location unavailable. Please enter your address manually.";
+        }
+    );
+}
+
+document.getElementById("delivery-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let customer;
+
+    if (document.getElementById("first-time-fields").hidden) {
+        customer = JSON.parse(localStorage.getItem("tomsRestaurantCustomer"));
+    } else {
+        customer = {
+            address: document.getElementById("customer-address").value.trim(),
+            phone: document.getElementById("customer-phone").value.trim(),
+            phone2: document.getElementById("customer-phone2").value.trim(),
+            location: orderLocation
+        };
+
+        if (!customer.address ||
+            !/^[0-9]{10}$/.test(customer.phone) ||
+            !/^[0-9]{10}$/.test(customer.phone2)) {
+            alert("Enter your address and both valid 10-digit phone numbers.");
+            return;
+        }
+
+        localStorage.setItem("tomsRestaurantCustomer", JSON.stringify(customer));
+    }
+
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    const lines = [
+        "🍽️ NEW ORDER - TOM'S RESTAURANT",
+        "",
+        "Address: " + customer.address,
+        "Primary Contact: " + customer.phone,
+        "Alternate Contact: " + customer.phone2
+    ];
+
+    if (customer.location) {
+        lines.push("Map Location: " + customer.location);
+    }
+
+    lines.push("", "ORDER ITEMS");
+
+    for (let i = 0; i < foods.length; i++) {
+        if (quantities[i] > 0) {
+            const itemTotal = quantities[i] * foods[i].price;
+            totalItems += quantities[i];
+            totalPrice += itemTotal;
+            lines.push(foods[i].name + " x " + quantities[i] + " = ₹" + itemTotal);
+        }
+    }
+
+    lines.push(
+        "",
+        "Total Items: " + totalItems,
+        "Total Amount: ₹" + totalPrice,
+        "",
+        "Hello, I would like to place this order."
+    );
+
+    closeDeliveryPopup();
+
+    window.open(
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(lines.join("\n")),
+        "_blank"
+    );
+});
 
 
 /* =========================
