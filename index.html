@@ -1153,6 +1153,47 @@ function editDeliveryDetails() {
     document.getElementById("saved-customer-details").hidden = true;
     document.getElementById("change-details-btn").hidden = true;
 }
+    ```javascript
+function toggleReturningCustomer() {
+    const visited = document.getElementById("visited-before").checked;
+    const saved = localStorage.getItem("tomsRestaurantCustomer");
+
+    const fields = document.getElementById("first-time-fields");
+    const savedDetails = document.getElementById("saved-customer-details");
+    const changeButton = document.getElementById("change-details-btn");
+    const note = document.getElementById("returning-note");
+
+    if (visited && saved) {
+        fields.hidden = true;
+        savedDetails.hidden = false;
+        changeButton.hidden = false;
+        note.hidden = false;
+
+        const customer = JSON.parse(saved);
+
+        savedDetails.textContent =
+            "Saved address: " + customer.address +
+            " | Phone: " + customer.phone +
+            " | Alternate: " + customer.phone2;
+
+        orderLocation = customer.location || "";
+
+    } else {
+        fields.hidden = false;
+        savedDetails.hidden = true;
+        changeButton.hidden = true;
+        note.hidden = true;
+
+        if (visited && !saved) {
+            alert(
+                "We couldn't find saved details on this device. Please enter your delivery details."
+            );
+
+            document.getElementById("visited-before").checked = false;
+        }
+    }
+}
+
 
 let orderLocation = "";
 
