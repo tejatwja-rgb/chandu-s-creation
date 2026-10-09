@@ -654,6 +654,98 @@
     </div>
 
 </section>
+```html
+<!-- DELIVERY DETAILS POPUP -->
+
+<div id="delivery-popup" class="delivery-popup">
+
+    <div class="delivery-box">
+
+        <button class="popup-close"
+                onclick="closeDeliveryPopup()">
+            &times;
+        </button>
+
+        <h2>Delivery Details</h2>
+        <p>Enter your delivery information.</p>
+
+        <form id="delivery-form">
+
+            <div id="first-time-fields">
+
+                <label for="customer-address">
+                    Delivery Address
+                </label>
+
+                <textarea
+                    id="customer-address"
+                    placeholder="House number, street, area, landmark"
+                    required></textarea>
+
+                <label>Delivery Location</label>
+
+                <button type="button"
+                        class="location-btn"
+                        onclick="useCurrentLocation()">
+                    📍 Use Current Location
+                </button>
+
+                <p id="location-status">
+                    Or enter your address manually above.
+                </p>
+
+                <input type="hidden"
+                       id="customer-location">
+
+                <label for="customer-phone">
+                    Primary Contact Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Enter primary phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    inputmode="numeric"
+                    required>
+
+                <label for="customer-phone2">
+                    Alternate Contact Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customer-phone2"
+                    placeholder="Enter alternate phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    inputmode="numeric"
+                    required>
+
+            </div>
+
+            <div id="saved-customer-details"
+                 hidden></div>
+
+            <button type="button"
+                    id="change-details-btn"
+                    class="location-btn"
+                    onclick="editDeliveryDetails()"
+                    hidden>
+                ✏️ Change Address / Contact Details
+            </button>
+
+            <button type="submit"
+                    class="confirm-order-btn">
+                Continue to WhatsApp
+            </button>
+
+        </form>
+
+    </div>
+
+</div> 
 
 
 <!-- ABOUT -->
