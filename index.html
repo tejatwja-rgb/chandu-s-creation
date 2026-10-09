@@ -668,7 +668,18 @@
 
         <h2>Delivery Details</h2>
         <p>Enter your delivery information.</p>
+        ```html
+<label class="returning-option">
+    <input type="checkbox"
+           id="visited-before"
+           onchange="toggleReturningCustomer()">
+    Have you visited this restaurant before?
+</label>
 
+<p id="returning-note" hidden>
+    Welcome back! We'll use your saved delivery details.
+</p>
+        
         <form id="delivery-form">
 
             <div id="first-time-fields">
