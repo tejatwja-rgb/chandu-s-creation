@@ -1,1 +1,741 @@
+```css
+/* =========================
+   GLOBAL
+   ========================= */
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #1d100a;
+    color: #fff8ed;
+}
+
+
+/* =========================
+   THREE DOT MENU
+   ========================= */
+
+.three-dots {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+}
+
+.three-dots > button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.three-dots > button:hover {
+    background: #f5b84b;
+    color: #24140d;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    top: 54px;
+    right: 0;
+    width: 210px;
+    background: #321b11;
+    border: 1px solid rgba(245, 184, 75, 0.25);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.options-menu.show {
+    display: block;
+}
+
+.options-menu button {
+    display: block;
+    width: 100%;
+    padding: 12px 10px;
+    margin: 3px 0;
+    background: transparent;
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.options-menu button:hover {
+    background: #51301e;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+    position: relative;
+    height: 560px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.78)
+        );
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+.welcome-text {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #f5b84b;
+    font-weight: bold;
+}
+
+.hero-text h1 {
+    font-size: 58px;
+    margin: 12px 0;
+    color: #fff8ed;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin: 0 0 25px;
+    color: #f6eee3;
+}
+
+.view-menu-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #f5b84b;
+    color: #24140d;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.view-menu-btn:hover {
+    background: #ffe0a0;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MENU
+   ========================= */
+
+.menu {
+    padding: 70px 25px;
+    background: #1d100a;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading > span,
+.about-content > span {
+    color: #f5b84b;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin: 8px 0;
+    color: #fff8ed;
+}
+
+.section-heading p {
+    color: #cdbcae;
+    margin: 0;
+}
+
+
+/* =========================
+   FOOD GRID
+   ========================= */
+
+.food-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================
+   FOOD CARD
+   ========================= */
+
+.food-card {
+    background: #321b11;
+    border-radius: 14px;
+    overflow: hidden;
+
+    border: 1px solid rgba(245, 184, 75, 0.1);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.5);
+}
+
+.food-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    background: #4a2a1b;
+}
+
+.food-info {
+    padding: 15px;
+}
+
+.food-card h3 {
+    margin: 0 0 7px;
+    font-size: 18px;
+    color: #fff8ed;
+}
+
+.food-description {
+    margin: 0 0 15px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #cdbcae;
+    min-height: 36px;
+}
+
+.food-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f5b84b;
+}
+
+.add-btn {
+    border: none;
+    background: #f5b84b;
+    color: #24140d;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.add-btn:hover {
+    background: #ffe0a0;
+}
+
+
+/* =========================
+   CART
+   ========================= */
+
+.cart-box {
+    max-width: 700px;
+    margin: 55px auto 0;
+
+    background: #321b11;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    border: 1px solid rgba(245, 184, 75, 0.2);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+.cart-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding-bottom: 15px;
+}
+
+.cart-title h2 {
+    margin: 0;
+    color: #f5d28b;
+    font-size: 24px;
+}
+
+#cart-count {
+    color: #cdbcae;
+    font-size: 14px;
+}
+
+
+/* =========================
+   CART ITEMS
+   ========================= */
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cart-item h4 {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.cart-item span {
+    color: #cdbcae;
+    font-size: 13px;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-controls button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #f5b84b;
+    color: #24140d;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.cart-controls strong {
+    min-width: 20px;
+    text-align: center;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #9d8b7e;
+    padding: 20px 0;
+}
+
+
+/* =========================
+   CART SUMMARY
+   ========================= */
+
+.cart-summary {
+    margin-top: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 8px 0;
+
+    color: #d8c8bb;
+}
+
+.total-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    margin-top: 8px;
+    padding-top: 17px;
+
+    font-size: 21px;
+}
+
+.total-row strong {
+    color: #f5b84b;
+}
+
+
+/* =========================
+   ORDER BUTTON
+   ========================= */
+
+.order-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #25D366;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.order-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.order-note {
+    text-align: center;
+
+    color: #9d8b7e;
+
+    font-size: 12px;
+
+    margin: 10px 0 0;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about {
+    padding: 75px 25px;
+    background: #28160e;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.about-content h2 {
+    font-size: 35px;
+    margin: 10px 0 20px;
+}
+
+.about-content p {
+    color: #cdbcae;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   REVIEWS
+   ========================= */
+
+.reviews {
+    padding: 70px 25px;
+    background: #1d100a;
+}
+
+.review-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.review-card {
+    background: #321b11;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+.stars {
+    color: #f5b84b;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.review-card p {
+    color: #d7c7ba;
+    line-height: 1.6;
+}
+
+.review-card strong {
+    color: #fff8ed;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    text-align: center;
+
+    padding: 35px 20px;
+
+    background: #140a06;
+
+    color: #9d8b7e;
+}
+
+footer h3 {
+    color: #f5d28b;
+    margin: 0 0 8px;
+}
+
+footer p {
+    font-size: 13px;
+    margin: 7px 0;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 850px) {
+
+    .food-container {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+
+    .review-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 45px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 430px;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .welcome-text {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .menu {
+        padding: 45px 10px;
+    }
+
+    .section-heading {
+        margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    /*
+       TWO SMALL CARDS PER ROW
+       ON MOBILE
+    */
+
+    .food-container {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+    .food-card {
+        border-radius: 10px;
+    }
+
+    .food-card img {
+        height: 125px;
+    }
+
+    .food-info {
+        padding: 10px;
+    }
+
+    .food-card h3 {
+        font-size: 14px;
+        line-height: 1.25;
+    }
+
+    .food-description {
+        font-size: 11px;
+        min-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .item-price {
+        font-size: 16px;
+    }
+
+    .add-btn {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    .cart-box {
+        margin: 35px 5px 0;
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .cart-title h2 {
+        font-size: 20px;
+    }
+
+    .cart-item h4 {
+        font-size: 13px;
+    }
+
+    .total-row {
+        font-size: 18px;
+    }
+
+    .about {
+        padding: 50px 20px;
+    }
+
+    .about-content h2 {
+        font-size: 28px;
+    }
+
+    .reviews {
+        padding: 50px 15px;
+    }
+
+    .three-dots {
+        top: 12px;
+        right: 12px;
+    }
+
+}
+```
+/* =========================
+   ITEM QUANTITY + ITEM TOTAL
+   ========================= */
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-control button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    background: #f5b84b;
+    color: #24140d;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quantity-control span {
+    min-width: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item-total {
+    color: #f5b84b;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+}
