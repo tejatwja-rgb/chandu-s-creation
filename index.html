@@ -1,13 +1,11 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Tom's Restaurant</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,45 +14,28 @@
 <!-- THREE DOT MENU -->
 
 <div class="three-dots">
-
-    <button onclick="toggleMenu()">⋮</button>
+    <button type="button" onclick="toggleMenu()">⋮</button>
 
     <div id="options-menu" class="options-menu">
-
-        <button onclick="callRestaurant()">📞 Call Now</button>
-
-        <button onclick="reportProblem()">⚠️ Report Problem</button>
-
-        <button onclick="suggestIdea()">💡 Suggest an Idea</button>
-
+        <button type="button" onclick="callRestaurant()">📞 Call Now</button>
+        <button type="button" onclick="reportProblem()">⚠️ Report Problem</button>
+        <button type="button" onclick="suggestIdea()">💡 Suggest an Idea</button>
     </div>
-
 </div>
 
 
 <!-- HERO -->
 
 <section class="hero">
-
-    <img src="tom's-restuarant.jpg.jpeg"
-         alt="Tom's Restaurant">
-
+    <img src="tom's-restuarant.jpg.jpeg" alt="Tom's Restaurant">
     <div class="hero-overlay"></div>
 
     <div class="hero-text">
-
         <span class="welcome-text">WELCOME TO</span>
-
         <h1>Tom's Restaurant</h1>
-
         <p>Delicious food, made with love.</p>
-
-        <a href="#menu" class="view-menu-btn">
-            View Menu ↓
-        </a>
-
+        <a href="#menu" class="view-menu-btn">View Menu ↓</a>
     </div>
-
 </section>
 
 
@@ -63,532 +44,215 @@
 <section class="menu" id="menu">
 
     <div class="section-heading">
-
         <span>OUR SPECIALS</span>
-
         <h2>Our Menu</h2>
-
         <p>Freshly prepared and served with love.</p>
-
     </div>
-
 
     <div class="food-container">
 
-
-        <!-- ITEM 1 -->
-
         <div class="food-card">
-
-            <img src="chicken-biryani.jpg.jpeg"
-                 alt="Chicken Biryani">
-
+            <img src="chicken-biryani.jpg.jpeg" alt="Chicken Biryani">
             <div class="food-info">
-
                 <h3>Chicken Biryani</h3>
-
-                <p class="food-description">
-                    Delicious aromatic chicken biryani.
-                </p>
-
+                <p class="food-description">Delicious aromatic chicken biryani.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹200
-                    </span>
-
+                    <span class="item-price">₹200</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(0)">−</button>
-
                         <span id="quantity-0">0</span>
-
                         <button onclick="addToCart(0)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-0">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-0">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 2 -->
-
         <div class="food-card">
-
-            <img src="chicken-fry-piece-biryani.jpg.jpeg"
-                 alt="Chicken Fry Piece Biryani">
-
+            <img src="chicken-fry-piece-biryani.jpg.jpeg" alt="Chicken Fry Piece Biryani">
             <div class="food-info">
-
                 <h3>Chicken Fry Piece Biryani</h3>
-
-                <p class="food-description">
-                    Spicy and crispy chicken fry biryani.
-                </p>
-
+                <p class="food-description">Spicy and crispy chicken fry biryani.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹210
-                    </span>
-
+                    <span class="item-price">₹210</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(1)">−</button>
-
                         <span id="quantity-1">0</span>
-
                         <button onclick="addToCart(1)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-1">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-1">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 3 -->
-
         <div class="food-card">
-
-            <img src="chicken-joint-biryani.jpg.jpeg"
-                 alt="Chicken Joint Biryani">
-
+            <img src="chicken-joint-biryani.jpg.jpeg" alt="Chicken Joint Biryani">
             <div class="food-info">
-
                 <h3>Chicken Joint Biryani</h3>
-
-                <p class="food-description">
-                    Juicy chicken joint with flavorful rice.
-                </p>
-
+                <p class="food-description">Juicy chicken joint with flavorful rice.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹220
-                    </span>
-
+                    <span class="item-price">₹220</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(2)">−</button>
-
                         <span id="quantity-2">0</span>
-
                         <button onclick="addToCart(2)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-2">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-2">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 4 -->
-
         <div class="food-card">
-
-            <img src="food4.jpg"
-                 alt="Food Item 4">
-
+            <img src="food4.jpg" alt="Food Item 4">
             <div class="food-info">
-
                 <h3>Food Item 4</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹150
-                    </span>
-
+                    <span class="item-price">₹150</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(3)">−</button>
-
                         <span id="quantity-3">0</span>
-
                         <button onclick="addToCart(3)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-3">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-3">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 5 -->
-
         <div class="food-card">
-
-            <img src="food5.jpg"
-                 alt="Food Item 5">
-
+            <img src="food5.jpg" alt="Food Item 5">
             <div class="food-info">
-
                 <h3>Food Item 5</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹160
-                    </span>
-
+                    <span class="item-price">₹160</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(4)">−</button>
-
                         <span id="quantity-4">0</span>
-
                         <button onclick="addToCart(4)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-4">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-4">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 6 -->
-
         <div class="food-card">
-
-            <img src="food6.jpg"
-                 alt="Food Item 6">
-
+            <img src="food6.jpg" alt="Food Item 6">
             <div class="food-info">
-
                 <h3>Food Item 6</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹180
-                    </span>
-
+                    <span class="item-price">₹180</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(5)">−</button>
-
                         <span id="quantity-5">0</span>
-
                         <button onclick="addToCart(5)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-5">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-5">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 7 -->
-
         <div class="food-card">
-
-            <img src="food7.jpg"
-                 alt="Food Item 7">
-
+            <img src="food7.jpg" alt="Food Item 7">
             <div class="food-info">
-
                 <h3>Food Item 7</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹190
-                    </span>
-
+                    <span class="item-price">₹190</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(6)">−</button>
-
                         <span id="quantity-6">0</span>
-
                         <button onclick="addToCart(6)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-6">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-6">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 8 -->
-
         <div class="food-card">
-
-            <img src="food8.jpg"
-                 alt="Food Item 8">
-
+            <img src="food8.jpg" alt="Food Item 8">
             <div class="food-info">
-
                 <h3>Food Item 8</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹200
-                    </span>
-
+                    <span class="item-price">₹200</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(7)">−</button>
-
                         <span id="quantity-7">0</span>
-
                         <button onclick="addToCart(7)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-7">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-7">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 9 -->
-
         <div class="food-card">
-
-            <img src="food9.jpg"
-                 alt="Food Item 9">
-
+            <img src="food9.jpg" alt="Food Item 9">
             <div class="food-info">
-
                 <h3>Food Item 9</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹170
-                    </span>
-
+                    <span class="item-price">₹170</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(8)">−</button>
-
                         <span id="quantity-8">0</span>
-
                         <button onclick="addToCart(8)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-8">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-8">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 10 -->
-
         <div class="food-card">
-
-            <img src="food10.jpg"
-                 alt="Food Item 10">
-
+            <img src="food10.jpg" alt="Food Item 10">
             <div class="food-info">
-
                 <h3>Food Item 10</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹180
-                    </span>
-
+                    <span class="item-price">₹180</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(9)">−</button>
-
                         <span id="quantity-9">0</span>
-
                         <button onclick="addToCart(9)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-9">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-9">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 11 -->
-
         <div class="food-card">
-
-            <img src="food11.jpg"
-                 alt="Food Item 11">
-
+            <img src="food11.jpg" alt="Food Item 11">
             <div class="food-info">
-
                 <h3>Food Item 11</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹210
-                    </span>
-
+                    <span class="item-price">₹210</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(10)">−</button>
-
                         <span id="quantity-10">0</span>
-
                         <button onclick="addToCart(10)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-10">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-10">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- ITEM 12 -->
-
         <div class="food-card">
-
-            <img src="food12.jpg"
-                 alt="Food Item 12">
-
+            <img src="food12.jpg" alt="Food Item 12">
             <div class="food-info">
-
                 <h3>Food Item 12</h3>
-
-                <p class="food-description">
-                    Add your food description here.
-                </p>
-
+                <p class="food-description">Add your food description here.</p>
                 <div class="food-bottom">
-
-                    <span class="item-price">
-                        ₹220
-                    </span>
-
+                    <span class="item-price">₹220</span>
                     <div class="quantity-control">
-
                         <button onclick="removeFromCart(11)">−</button>
-
                         <span id="quantity-11">0</span>
-
                         <button onclick="addToCart(11)">+</button>
-
                     </div>
-
-                    <strong class="item-total"
-                            id="item-total-11">
-                        ₹0
-                    </strong>
-
+                    <strong class="item-total" id="item-total-11">₹0</strong>
                 </div>
-
             </div>
-
         </div>
 
     </div>
@@ -599,50 +263,28 @@
     <div class="cart-box" id="cart">
 
         <div class="cart-title">
-
             <h2>🛒 Your Cart</h2>
-
             <span id="cart-count">0 items</span>
-
         </div>
-
 
         <div id="cart-items">
-
-            <p class="empty-cart">
-                Your cart is empty.
-            </p>
-
+            <p class="empty-cart">Your cart is empty.</p>
         </div>
-
 
         <div class="cart-summary">
 
             <div class="summary-row">
-
                 <span>Total Items</span>
-
                 <strong id="total-items">0</strong>
-
             </div>
-
 
             <div class="summary-row total-row">
-
                 <span>Total Amount</span>
-
-                <strong>
-                    ₹<span id="total-price">0</span>
-                </strong>
-
+                <strong>₹<span id="total-price">0</span></strong>
             </div>
 
-
-            <button class="order-btn"
-                    onclick="orderOnWhatsApp()">
-
+            <button class="order-btn" onclick="orderOnWhatsApp()">
                 💬 Order on WhatsApp
-
             </button>
 
             <p class="order-note">
@@ -650,53 +292,44 @@
             </p>
 
         </div>
-
     </div>
 
 </section>
-```html
+
+
 <!-- DELIVERY DETAILS POPUP -->
 
 <div id="delivery-popup" class="delivery-popup">
 
     <div class="delivery-box">
 
-        <button class="popup-close"
-                onclick="closeDeliveryPopup()">
-            &times;
-        </button>
+        <button type="button" class="popup-close"
+                onclick="closeDeliveryPopup()">&times;</button>
 
         <h2>Delivery Details</h2>
         <p>Enter your delivery information.</p>
-        ```html
-<label class="returning-option">
-    <input type="checkbox"
-           id="visited-before"
-           onchange="toggleReturningCustomer()">
-    Have you visited this restaurant before?
-</label>
 
-<p id="returning-note" hidden>
-    Welcome back! We'll use your saved delivery details.
-</p>
-        
+        <label class="returning-option">
+            <input type="checkbox" id="visited-before"
+                   onchange="toggleReturningCustomer()">
+            Have you visited this restaurant before?
+        </label>
+
+        <p id="returning-note" hidden>
+            Welcome back! We'll use your saved delivery details.
+        </p>
+
         <form id="delivery-form">
 
             <div id="first-time-fields">
 
-                <label for="customer-address">
-                    Delivery Address
-                </label>
-
-                <textarea
-                    id="customer-address"
-                    placeholder="House number, street, area, landmark"
-                    required></textarea>
+                <label for="customer-address">Delivery Address</label>
+                <textarea id="customer-address"
+                          placeholder="House number, street, area, landmark"
+                          required></textarea>
 
                 <label>Delivery Location</label>
-
-                <button type="button"
-                        class="location-btn"
+                <button type="button" class="location-btn"
                         onclick="useCurrentLocation()">
                     📍 Use Current Location
                 </button>
@@ -705,78 +338,51 @@
                     Or enter your address manually above.
                 </p>
 
-                <input type="hidden"
-                       id="customer-location">
+                <input type="hidden" id="customer-location">
 
-                <label for="customer-phone">
-                    Primary Contact Number
-                </label>
+                <label for="customer-phone">Primary Contact Number</label>
+                <input type="tel" id="customer-phone"
+                       placeholder="Enter primary phone number"
+                       pattern="[0-9]{10}" maxlength="10"
+                       inputmode="numeric" required>
 
-                <input
-                    type="tel"
-                    id="customer-phone"
-                    placeholder="Enter primary phone number"
-                    pattern="[0-9]{10}"
-                    maxlength="10"
-                    inputmode="numeric"
-                    required>
-
-                <label for="customer-phone2">
-                    Alternate Contact Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="customer-phone2"
-                    placeholder="Enter alternate phone number"
-                    pattern="[0-9]{10}"
-                    maxlength="10"
-                    inputmode="numeric"
-                    required>
+                <label for="customer-phone2">Alternate Contact Number</label>
+                <input type="tel" id="customer-phone2"
+                       placeholder="Enter alternate phone number"
+                       pattern="[0-9]{10}" maxlength="10"
+                       inputmode="numeric" required>
 
             </div>
 
-            <div id="saved-customer-details"
-                 hidden></div>
+            <div id="saved-customer-details" hidden></div>
 
-            <button type="button"
-                    id="change-details-btn"
+            <button type="button" id="change-details-btn"
                     class="location-btn"
-                    onclick="editDeliveryDetails()"
-                    hidden>
+                    onclick="editDeliveryDetails()" hidden>
                 ✏️ Change Address / Contact Details
             </button>
 
-            <button type="submit"
-                    class="confirm-order-btn">
+            <button type="submit" class="confirm-order-btn">
                 Continue to WhatsApp
             </button>
 
         </form>
-
     </div>
-
-</div> 
+</div>
 
 
 <!-- ABOUT -->
 
 <section class="about">
-
     <div class="about-content">
-
         <span>ABOUT US</span>
-
         <h2>About Tom's Restaurant</h2>
-
         <p>
             Welcome to Tom's Restaurant!
             Enjoy delicious food, great taste and a wonderful experience.
             We prepare every dish with care and serve it fresh.
         </p>
-
     </div>
-
 </section>
 
 
@@ -785,329 +391,154 @@
 <section class="reviews">
 
     <div class="section-heading">
-
         <span>WHAT PEOPLE SAY</span>
-
         <h2>Customer Reviews</h2>
-
     </div>
-
 
     <div class="review-container">
 
         <div class="review-card">
-
             <div class="stars">★★★★★</div>
-
-            <p>
-                "The food was delicious and the service was excellent!"
-            </p>
-
+            <p>"The food was delicious and the service was excellent!"</p>
             <strong>Happy Customer</strong>
-
         </div>
 
-
         <div class="review-card">
-
             <div class="stars">★★★★★</div>
-
-            <p>
-                "Really tasty biryani. Definitely coming back again."
-            </p>
-
+            <p>"Really tasty biryani. Definitely coming back again."</p>
             <strong>Happy Customer</strong>
-
         </div>
 
-
         <div class="review-card">
-
             <div class="stars">★★★★★</div>
-
-            <p>
-                "Great taste and good quantity. Highly recommended!"
-            </p>
-
+            <p>"Great taste and good quantity. Highly recommended."</p>
             <strong>Happy Customer</strong>
-
         </div>
 
     </div>
-
 </section>
 
 
 <!-- FOOTER -->
 
 <footer>
-
     <h3>Tom's Restaurant</h3>
-
     <p>Delicious food, made with love.</p>
-
     <p>© 2026 Tom's Restaurant. All Rights Reserved.</p>
-
 </footer>
 
 
 <script>
 
-/* =========================
-   WHATSAPP NUMBER
-   ========================= */
+/* WHATSAPP NUMBER */
 
 const whatsappNumber = "919701846382";
+const customerStorageKey = "tomsRestaurantCustomer";
+let orderLocation = "";
 
 
-/* =========================
-   FOOD DATA
-   ========================= */
+/* FOOD DATA */
 
 const foods = [
-
-    {
-        name: "Chicken Biryani",
-        price: 200
-    },
-
-    {
-        name: "Chicken Fry Piece Biryani",
-        price: 210
-    },
-
-    {
-        name: "Chicken Joint Biryani",
-        price: 220
-    },
-
-    {
-        name: "Food Item 4",
-        price: 150
-    },
-
-    {
-        name: "Food Item 5",
-        price: 160
-    },
-
-    {
-        name: "Food Item 6",
-        price: 180
-    },
-
-    {
-        name: "Food Item 7",
-        price: 190
-    },
-
-    {
-        name: "Food Item 8",
-        price: 200
-    },
-
-    {
-        name: "Food Item 9",
-        price: 170
-    },
-
-    {
-        name: "Food Item 10",
-        price: 180
-    },
-
-    {
-        name: "Food Item 11",
-        price: 210
-    },
-
-    {
-        name: "Food Item 12",
-        price: 220
-    }
-
+    { name: "Chicken Biryani", price: 200 },
+    { name: "Chicken Fry Piece Biryani", price: 210 },
+    { name: "Chicken Joint Biryani", price: 220 },
+    { name: "Food Item 4", price: 150 },
+    { name: "Food Item 5", price: 160 },
+    { name: "Food Item 6", price: 180 },
+    { name: "Food Item 7", price: 190 },
+    { name: "Food Item 8", price: 200 },
+    { name: "Food Item 9", price: 170 },
+    { name: "Food Item 10", price: 180 },
+    { name: "Food Item 11", price: 210 },
+    { name: "Food Item 12", price: 220 }
 ];
 
-
-const quantities =
-    new Array(foods.length).fill(0);
+const quantities = new Array(foods.length).fill(0);
 
 
-/* =========================
-   ADD TO CART
-   ========================= */
+/* ADD TO CART */
 
 function addToCart(item) {
-
     quantities[item]++;
-
     updateItemDisplay(item);
-
     updateCart();
-
 }
 
 
-/* =========================
-   REMOVE FROM CART
-   ========================= */
+/* REMOVE FROM CART */
 
 function removeFromCart(item) {
-
     if (quantities[item] > 0) {
-
         quantities[item]--;
-
     }
 
     updateItemDisplay(item);
-
     updateCart();
-
 }
 
 
-/* =========================
-   UPDATE ITEM ON FOOD CARD
-   ========================= */
+/* UPDATE FOOD CARD */
 
 function updateItemDisplay(item) {
+    const quantity = quantities[item];
+    const total = quantity * foods[item].price;
 
-    const quantity =
-        quantities[item];
-
-    const total =
-        quantity * foods[item].price;
-
-
-    document.getElementById(
-        "quantity-" + item
-    ).textContent = quantity;
-
-
-    document.getElementById(
-        "item-total-" + item
-    ).textContent = "₹" + total;
-
+    document.getElementById("quantity-" + item).textContent = quantity;
+    document.getElementById("item-total-" + item).textContent = "₹" + total;
 }
 
 
-/* =========================
-   UPDATE CART
-   ========================= */
+/* UPDATE CART */
 
 function updateCart() {
-
-    const cartItems =
-        document.getElementById("cart-items");
+    const cartItems = document.getElementById("cart-items");
 
     let totalItems = 0;
-
     let totalPrice = 0;
-
     let cartHTML = "";
 
-
     for (let i = 0; i < foods.length; i++) {
-
         if (quantities[i] > 0) {
-
-            const itemTotal =
-                quantities[i] * foods[i].price;
+            const itemTotal = quantities[i] * foods[i].price;
 
             totalItems += quantities[i];
-
             totalPrice += itemTotal;
 
-
             cartHTML += `
-
                 <div class="cart-item">
-
                     <div>
-
-                        <h4>
-                            ${foods[i].name}
-                        </h4>
-
-                        <span>
-                            ₹${foods[i].price}
-                            ×
-                            ${quantities[i]}
-                        </span>
-
+                        <h4>${foods[i].name}</h4>
+                        <span>₹${foods[i].price} × ${quantities[i]}</span>
                     </div>
-
-
                     <div class="cart-controls">
-
-                        <button
-                            onclick="removeFromCart(${i})">
-                            −
-                        </button>
-
-                        <strong>
-                            ${quantities[i]}
-                        </strong>
-
-                        <button
-                            onclick="addToCart(${i})">
-                            +
-                        </button>
-
+                        <button onclick="removeFromCart(${i})">−</button>
+                        <strong>${quantities[i]}</strong>
+                        <button onclick="addToCart(${i})">+</button>
                     </div>
-
                 </div>
-
             `;
-
         }
-
     }
-
 
     if (totalItems === 0) {
-
-        cartHTML = `
-            <p class="empty-cart">
-                Your cart is empty.
-            </p>
-        `;
-
+        cartHTML = '<p class="empty-cart">Your cart is empty.</p>';
     }
 
+    cartItems.innerHTML = cartHTML;
 
-    cartItems.innerHTML =
-        cartHTML;
+    document.getElementById("total-items").textContent = totalItems;
+    document.getElementById("total-price").textContent = totalPrice;
 
-
-    document.getElementById(
-        "total-items"
-    ).textContent = totalItems;
-
-
-    document.getElementById(
-        "total-price"
-    ).textContent = totalPrice;
-
-
-    document.getElementById(
-        "cart-count"
-    ).textContent =
-        totalItems +
-        (totalItems === 1
-            ? " item"
-            : " items");
-
+    document.getElementById("cart-count").textContent =
+        totalItems + (totalItems === 1 ? " item" : " items");
 }
 
 
-/* =========================
-   WHATSAPP ORDER
-   ========================= */
+/* OPEN DELIVERY POPUP */
 
 function orderOnWhatsApp() {
-    let totalItems = quantities.reduce(
+    const totalItems = quantities.reduce(
         (sum, quantity) => sum + quantity, 0
     );
 
@@ -1116,77 +547,57 @@ function orderOnWhatsApp() {
         return;
     }
 
-    const popup = document.getElementById("delivery-popup");
-    const saved = localStorage.getItem("tomsRestaurantCustomer");
+    document.getElementById("delivery-popup").classList.add("show");
 
-    popup.classList.add("show");
+    const saved = localStorage.getItem(customerStorageKey);
+    document.getElementById("visited-before").checked = !!saved;
 
-    document.getElementById("first-time-fields").hidden = !!saved;
-    document.getElementById("saved-customer-details").hidden = !saved;
-    document.getElementById("change-details-btn").hidden = !saved;
-
-    if (saved) {
-        const c = JSON.parse(saved);
-        document.getElementById("saved-customer-details").textContent =
-            "Address: " + c.address +
-            " | Primary: " + c.phone +
-            " | Alternate: " + c.phone2;
-        orderLocation = c.location || "";
-    }
+    toggleReturningCustomer();
 }
+
+
+/* CLOSE DELIVERY POPUP */
 
 function closeDeliveryPopup() {
     document.getElementById("delivery-popup").classList.remove("show");
 }
 
-function editDeliveryDetails() {
-    const c = JSON.parse(localStorage.getItem("tomsRestaurantCustomer"));
-    if (!c) return;
 
-    document.getElementById("customer-address").value = c.address;
-    document.getElementById("customer-phone").value = c.phone;
-    document.getElementById("customer-phone2").value = c.phone2;
-    document.getElementById("customer-location").value = c.location || "";
-    orderLocation = c.location || "";
+/* RETURNING CUSTOMER */
 
-    document.getElementById("first-time-fields").hidden = false;
-    document.getElementById("saved-customer-details").hidden = true;
-    document.getElementById("change-details-btn").hidden = true;
-}
-    ```javascript
 function toggleReturningCustomer() {
     const visited = document.getElementById("visited-before").checked;
-    const saved = localStorage.getItem("tomsRestaurantCustomer");
+    const saved = localStorage.getItem(customerStorageKey);
 
     const fields = document.getElementById("first-time-fields");
-    const savedDetails = document.getElementById("saved-customer-details");
+    const details = document.getElementById("saved-customer-details");
     const changeButton = document.getElementById("change-details-btn");
     const note = document.getElementById("returning-note");
 
     if (visited && saved) {
+        const customer = JSON.parse(saved);
+
         fields.hidden = true;
-        savedDetails.hidden = false;
+        details.hidden = false;
         changeButton.hidden = false;
         note.hidden = false;
 
-        const customer = JSON.parse(saved);
-
-        savedDetails.textContent =
-            "Saved address: " + customer.address +
-            " | Phone: " + customer.phone +
+        details.textContent =
+            "Address: " + customer.address +
+            " | Primary: " + customer.phone +
             " | Alternate: " + customer.phone2;
 
         orderLocation = customer.location || "";
 
     } else {
         fields.hidden = false;
-        savedDetails.hidden = true;
+        details.hidden = true;
         changeButton.hidden = true;
         note.hidden = true;
 
         if (visited && !saved) {
             alert(
-                "We couldn't find saved details on this device. Please enter your delivery details."
+                "No saved details found on this device. Please enter your delivery details."
             );
 
             document.getElementById("visited-before").checked = false;
@@ -1195,7 +606,30 @@ function toggleReturningCustomer() {
 }
 
 
-let orderLocation = "";
+/* EDIT SAVED CUSTOMER DETAILS */
+
+function editDeliveryDetails() {
+    const saved = localStorage.getItem(customerStorageKey);
+    if (!saved) return;
+
+    const customer = JSON.parse(saved);
+
+    document.getElementById("customer-address").value = customer.address;
+    document.getElementById("customer-phone").value = customer.phone;
+    document.getElementById("customer-phone2").value = customer.phone2;
+    document.getElementById("customer-location").value = customer.location || "";
+
+    orderLocation = customer.location || "";
+
+    document.getElementById("visited-before").checked = false;
+    document.getElementById("first-time-fields").hidden = false;
+    document.getElementById("saved-customer-details").hidden = true;
+    document.getElementById("change-details-btn").hidden = true;
+    document.getElementById("returning-note").hidden = true;
+}
+
+
+/* GET CURRENT LOCATION */
 
 function useCurrentLocation() {
     const status = document.getElementById("location-status");
@@ -1224,170 +658,146 @@ function useCurrentLocation() {
     );
 }
 
-document.getElementById("delivery-form").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    let customer;
+/* SUBMIT ORDER TO WHATSAPP */
 
-    if (document.getElementById("first-time-fields").hidden) {
-        customer = JSON.parse(localStorage.getItem("tomsRestaurantCustomer"));
-    } else {
-        customer = {
-            address: document.getElementById("customer-address").value.trim(),
-            phone: document.getElementById("customer-phone").value.trim(),
-            phone2: document.getElementById("customer-phone2").value.trim(),
-            location: orderLocation
-        };
+document.getElementById("delivery-form").addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
 
-        if (!customer.address ||
-            !/^[0-9]{10}$/.test(customer.phone) ||
-            !/^[0-9]{10}$/.test(customer.phone2)) {
-            alert("Enter your address and both valid 10-digit phone numbers.");
-            return;
+        let customer;
+
+        if (document.getElementById("first-time-fields").hidden) {
+            customer = JSON.parse(
+                localStorage.getItem(customerStorageKey)
+            );
+
+            if (!customer) {
+                alert("Please enter your delivery details.");
+                return;
+            }
+        } else {
+            customer = {
+                address: document.getElementById("customer-address").value.trim(),
+                phone: document.getElementById("customer-phone").value.trim(),
+                phone2: document.getElementById("customer-phone2").value.trim(),
+                location:
+                    document.getElementById("customer-location").value ||
+                    orderLocation
+            };
+
+            if (
+                !customer.address ||
+                !/^[0-9]{10}$/.test(customer.phone) ||
+                !/^[0-9]{10}$/.test(customer.phone2)
+            ) {
+                alert("Enter your address and both valid 10-digit phone numbers.");
+                return;
+            }
+
+            localStorage.setItem(
+                customerStorageKey,
+                JSON.stringify(customer)
+            );
         }
 
-        localStorage.setItem("tomsRestaurantCustomer", JSON.stringify(customer));
-    }
+        let totalItems = 0;
+        let totalPrice = 0;
 
-    let totalItems = 0;
-    let totalPrice = 0;
+        const lines = [
+            "NEW ORDER - TOM'S RESTAURANT",
+            "",
+            "Delivery Address: " + customer.address,
+            "Primary Contact: " + customer.phone,
+            "Alternate Contact: " + customer.phone2
+        ];
 
-    const lines = [
-        "🍽️ NEW ORDER - TOM'S RESTAURANT",
-        "",
-        "Address: " + customer.address,
-        "Primary Contact: " + customer.phone,
-        "Alternate Contact: " + customer.phone2
-    ];
-
-    if (customer.location) {
-        lines.push("Map Location: " + customer.location);
-    }
-
-    lines.push("", "ORDER ITEMS");
-
-    for (let i = 0; i < foods.length; i++) {
-        if (quantities[i] > 0) {
-            const itemTotal = quantities[i] * foods[i].price;
-            totalItems += quantities[i];
-            totalPrice += itemTotal;
-            lines.push(foods[i].name + " x " + quantities[i] + " = ₹" + itemTotal);
+        if (customer.location) {
+            lines.push("Map Location: " + customer.location);
         }
-    }
 
-    lines.push(
-        "",
-        "Total Items: " + totalItems,
-        "Total Amount: ₹" + totalPrice,
-        "",
-        "Hello, I would like to place this order."
-    );
+        lines.push("", "ORDER ITEMS");
 
-    closeDeliveryPopup();
+        for (let i = 0; i < foods.length; i++) {
+            if (quantities[i] > 0) {
+                const itemTotal = quantities[i] * foods[i].price;
 
-    window.open(
-        "https://wa.me/" + whatsappNumber +
-        "?text=" + encodeURIComponent(lines.join("\n")),
-        "_blank"
-    );
-});
+                totalItems += quantities[i];
+                totalPrice += itemTotal;
 
+                lines.push(
+                    foods[i].name + " × " + quantities[i] +
+                    " = ₹" + itemTotal
+                );
+            }
+        }
 
-/* =========================
-   THREE DOT MENU
-   ========================= */
-
-function toggleMenu() {
-
-    const menu =
-        document.getElementById(
-            "options-menu"
+        lines.push(
+            "",
+            "Total Items: " + totalItems,
+            "Total Amount: ₹" + totalPrice,
+            "",
+            "Hello, I would like to place this order."
         );
 
-    menu.classList.toggle("show");
+        const url =
+            "https://wa.me/" + whatsappNumber +
+            "?text=" + encodeURIComponent(lines.join("\n"));
 
-}
-
-
-/* =========================
-   CLOSE MENU
-   ========================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const menu =
-            document.getElementById(
-                "options-menu"
-            );
-
-        const dots =
-            document.querySelector(
-                ".three-dots"
-            );
-
-
-        if (!dots.contains(event.target)) {
-
-            menu.classList.remove("show");
-
-        }
-
+        closeDeliveryPopup();
+        window.open(url, "_blank");
     }
 );
 
 
-/* =========================
-   CALL RESTAURANT
-   ========================= */
+/* THREE DOT MENU */
 
-function callRestaurant() {
-
-    window.location.href =
-        "tel:+919701846382";
-
+function toggleMenu() {
+    document.getElementById("options-menu").classList.toggle("show");
 }
 
 
-/* =========================
-   REPORT PROBLEM
-   ========================= */
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", function(event) {
+    const menu = document.getElementById("options-menu");
+    const dots = document.querySelector(".three-dots");
+
+    if (!dots.contains(event.target)) {
+        menu.classList.remove("show");
+    }
+});
+
+
+/* CALL RESTAURANT */
+
+function callRestaurant() {
+    window.location.href = "tel:+919701846382";
+}
+
+
+/* REPORT PROBLEM */
 
 function reportProblem() {
-
     alert(
         "Thank you for helping us improve. Please contact the restaurant to report a problem."
     );
-
 }
 
 
-/* =========================
-   SUGGEST IDEA
-   ========================= */
+/* SUGGEST IDEA */
 
 function suggestIdea() {
-
-    const idea =
-        prompt(
-            "Please enter your suggestion:"
-        );
-
+    const idea = prompt("Please enter your suggestion:");
 
     if (idea) {
-
-        alert(
-            "Thank you for your suggestion! ❤️"
-        );
-
+        alert("Thank you for your suggestion! ❤️");
     }
-
 }
 
 </script>
 
 </body>
-
 </html>
-
+```
